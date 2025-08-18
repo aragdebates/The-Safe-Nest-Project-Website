@@ -3,17 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Safe Nest Project - Creating Comfort for Young Survivors</title>
+    <title>The Safe Nest Project - Creating Comfort for Young Survivors of Domestic Violence</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The Safe Nest Project provides trauma-informed comfort kits and emotional support resources for children affected by domestic violence. A youth-led nonprofit creating moments of safety and healing.">
+    <meta name="keywords" content="domestic violence, children, comfort kits, nonprofit, trauma-informed care, youth-led, emotional support">
+    <meta name="author" content="The Safe Nest Project">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="The Safe Nest Project - Creating Comfort for Young Survivors">
+    <meta property="og:description" content="Youth-led nonprofit providing trauma-informed comfort kits for children affected by domestic violence">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://safenestproject.org">
+    <meta property="og:image" content="v3v3.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Safe Nest Project - Creating Comfort for Young Survivors">
+    <meta name="twitter:description" content="Youth-led nonprofit providing trauma-informed comfort kits for children affected by domestic violence">
+    <meta name="twitter:image" content="v3v3.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="v3v3.jpg">
+    
+    <!-- External Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-purple: #8A2BE2;
+            --primary-purple: rgb(138, 43, 226);
             --secondary-purple: #9932CC;
             --accent-orange: #FFA500;
             --warm-brown: #8B4513;
             --light-brown: #D2691E;
             --cream: #FFE4B5;
+            --success-green: #10B981;
+            --warning-red: #EF4444;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
         }
         
         * {
@@ -21,8 +50,13 @@
         }
         
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
         }
         
         .gradient-bg {
@@ -32,6 +66,23 @@
         .hero-section {
             min-height: 100vh;
             background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 50%, #7B68EE 100%);
+            position: relative;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
         .section-padding {
@@ -43,11 +94,13 @@
             color: var(--primary-purple);
             padding: 15px 30px;
             border-radius: 50px;
-            font-weight: bold;
+            font-weight: 600;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary:hover {
@@ -62,7 +115,7 @@
             border: 2px solid var(--accent-orange);
             padding: 13px 28px;
             border-radius: 50px;
-            font-weight: bold;
+            font-weight: 600;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
@@ -78,13 +131,34 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 20px;
+            border: 1px solid var(--light-brown);
             padding: 30px;
-            border-left: 5px solid var(--light-brown);
+            border-left: 9px solid var(--light-brown);
+            transition: transform 0.3s ease;
+        }
+        .affsacard {
+            background: white;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid var(--light-brown);
+            padding: 30px;
+            border-left: 9px solid var(--light-brown);
             transition: transform 0.3s ease;
         }
         
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-white {
+            background: white;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-white:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .text-orange {
@@ -104,23 +178,24 @@
         }
         
         .navbar {
-            /*background: rgba(138, 43, 226, 0.95);*/
-            background: #6f3eb8;
+            background: rgba(111, 62, 184, 0.95);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .navbar.scrolled {
-            background: #6f3eb8;
+            background: rgba(111, 62, 184, 0.98);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
         
         .nav-link {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 1px 5px;
             border-radius: 25px;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
         
         .nav-link:hover {
@@ -130,7 +205,7 @@
         
         .section-title {
             font-size: 3rem;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--accent-orange);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             margin-bottom: 30px;
@@ -161,6 +236,88 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .trust-indicator {
+            background: var(--success-green);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .safety-exit {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--warning-red);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+        
+        .safety-exit:hover {
+            background: #DC2626;
+            transform: scale(1.05);
+        }
+        
+        .impact-counter {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            line-height: 1;
+        }
+        
+        .newsletter-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-orange);
+            color: var(--primary-purple);
+            transform: translateY(-2px);
         }
         
         @media (max-width: 768px) {
@@ -175,450 +332,588 @@
             .section-padding {
                 padding: 60px 0;
             }
+            
+            .impact-counter {
+                font-size: 3rem;
+            }
+            
+            .safety-exit {
+                top: 10px;
+                right: 10px;
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus styles for keyboard navigation */
+        .nav-link:focus,
+        .btn-primary:focus,
+        .btn-secondary:focus {
+            outline: 3px solid var(--accent-orange);
+            outline-offset: 2px;
         }
     </style>
 </head>
-<body>
+<body class="loading">
+    
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white p-2 rounded">
+        Skip to main content
+    </a>
+
     <!-- Navigation -->
-    <nav class="navbar fixed top-0 w-full z-50">
+    <nav class="navbar fixed top-0 w-full z-40" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
+                 <div class="flex items-center space-x-4">
                     
                         <img src="v3v3 (2).jpg" alt="Safe Nest Project Logo" class="logo-img">
                    
-                    <span class="text-white font-bold text-xl">The Safe Nest Project</span>
+                    <span class="text-white font-bold text-l">The Safe Nest Project</span>
                 </div>
                 <div class="hidden md:flex space-x-6">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#about" class="nav-link">About</a>
                     <a href="#approach" class="nav-link">Our Approach</a>
+                    <a href="#team" class="nav-link">Team</a>
                     <a href="#partnership" class="nav-link">Partnership</a>
+                    <a href="#partners" class="nav-link">Partners</a>
                     <a href="#impact" class="nav-link">Impact</a>
                     <a href="#get-involved" class="nav-link">Get Involved</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white">
-                        <i class="fas fa-bars text-2xl"></i>
+                    <button id="mobile-menu-btn" class="text-white" aria-label="Toggle mobile menu" aria-expanded="false">
+                        <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <div id="mobile-menu" class="hidden md:hidden mt-4" role="menu">
                 <div class="flex flex-col space-y-2">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#approach" class="nav-link">Our Approach</a>
-                    <a href="#partnership" class="nav-link">Partnership</a>
-                    <a href="#impact" class="nav-link">Impact</a>
-                    <a href="#get-involved" class="nav-link">Get Involved</a>
+                    <a href="#home" class="nav-link" role="menuitem">Home</a>
+                    <a href="#about" class="nav-link" role="menuitem">About</a>
+                    <a href="#approach" class="nav-link" role="menuitem">Our Approach</a>
+                    <a href="#team" class="nav-link" role="menuitem">Team</a>
+                    <a href="#partnership" class="nav-link" role="menuitem">Partnership</a>
+                    <a href="#partners" class="nav-link" role="menuitem">Partners</a>
+                    <a href="#impact" class="nav-link" role="menuitem">Impact</a>
+                    <a href="#get-involved" class="nav-link" role="menuitem">Get Involved</a>
+                    <a href="#contact" class="nav-link" role="menuitem">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section flex items-center justify-center text-white">
-        <div class="container mx-auto px-6 text-center">
-            <div class="fade-in">
-                <div class="mb-8">
-                    <img src="v3v3.jpg" alt="Safe Nest Project Logo" class="w-32 h-32 mx-auto rounded-full shadow-lg">
-                </div>
-                <h1 class="text-5xl md:text-6xl font-bold text-orange mb-6">The Safe Nest Project</h1>
-                <p class="text-2xl text-cream mb-8">Creating Comfort for Young Survivors</p>
-                <p class="text-xl max-w-4xl mx-auto mb-12 leading-relaxed">
-                    A youth-led nonprofit initiative providing trauma-informed comfort kits and emotional support resources for children affected by domestic violence
-                </p>
-                <div class="space-x-4">
-                    <a href="#get-involved" class="btn-primary">Support Our Mission</a>
-                    <a href="#about" class="btn-secondary">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section-padding gradient-bg text-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="section-title">The Challenge We Address</h2>
-                <p class="text-xl text-cream max-w-4xl mx-auto">
-                    Every year, millions of children witness or experience domestic violence, leaving lasting emotional scars that require specialized care and support.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section flex items-center justify-center text-white" role="banner" style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.8) 0%, rgba(153, 50, 204, 0.8) 50%, rgba(123, 104, 238, 0.8) 100%), url('hero-image.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <div class="hero-content container mx-auto px-6 text-center">
                 <div class="fade-in">
-                    <div class="space-y-6">
-                        <div class="card">
-                            <div class="flex items-center mb-4">
-                                <i class="fas fa-heart-broken text-3xl text-brown mr-4"></i>
-                                <h3 class="text-xl font-bold text-orange">Immediate Need</h3>
-                            </div>
-                            <p>Children in crisis situations often lack access to immediate emotional support resources and comforting items designed specifically for their developmental needs.</p>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="flex items-center mb-4">
-                                <i class="fas fa-child text-3xl text-brown mr-4"></i>
-                                <h3 class="text-xl font-bold text-orange">Specialized Care</h3>
-                            </div>
-                            <p>Young survivors require care that acknowledges their unique experiences and provides age-appropriate comfort.</p>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="flex items-center mb-4">
-                                <i class="fas fa-hands-helping text-3xl text-brown mr-4"></i>
-                                <h3 class="text-xl font-bold text-orange">Critical Timing</h3>
-                            </div>
-                            <p>Traditional support systems may not reach children at the moment they need comfort most - during the immediate crisis period. Young survivors need items beyond basic necessities to emotionally process their experience.</p>
-                        </div>
+                    <div class="mb-8">
+                        <img src="v3v3.jpg" alt="Safe Nest Project Logo" class="w-32 h-32 mx-auto rounded-full shadow-lg">
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold font-display text-orange mb-6">The Safe Nest Project</h1>
+                    <p class="text-2xl text-cream mb-4 font-display">Creating Comfort for Young Survivors</p>
+                    <div class="trust-indicator">
+                        <i class="fas fa-shield-alt mr-2" aria-hidden="true"></i>
+                        Youth-led • Trauma-informed • Community-driven
+                    </div>
+                    <p class="text-xl max-w-4xl mx-auto mb-12 leading-relaxed">
+                        A youth-led nonprofit initiative providing trauma-informed comfort kits and emotional support resources for children affected by domestic violence
+                    </p>
+                    <div class="space-x-4">
+                        <a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors?attribution_id=sl:4e75d642-8a84-4353-98a7-00ca1d565c0c" class="btn-primary" aria-describedby="donate-description">
+                            <i class="fas fa-heart mr-2" aria-hidden="true"></i>
+                            Support Our Mission
+                        </a>
+                        <a href="#about" class="btn-secondary">
+                            <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>
+                            Learn More
+                        </a>
+                    </div>
+                    <div id="donate-description" class="sr-only">
+                        Donate to help us create comfort kits for children affected by domestic violence
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="section-title font-display" style="color: var(--primary-purple);">The Challenge We Address</h2>
+                    <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
+                        Every year, millions of children witness or experience domestic violence, leaving lasting emotional scars that require specialized care and support.
+                    </p>
+                </div>
                 
-                <div class="fade-in">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <div class="space-y-6">
+                            <div class="card">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-heart-broken text-3xl text-brown mr-4" aria-hidden="true"></i>
+                                    <h3 class="text-xl font-bold text-orange">Immediate Need</h3>
+                                </div>
+                                <p>Children in crisis situations often lack access to immediate emotional support resources and comforting items designed specifically for their developmental needs.</p>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-child text-3xl text-brown mr-4" aria-hidden="true"></i>
+                                    <h3 class="text-xl font-bold text-orange">Specialized Care</h3>
+                                </div>
+                                <p>Young survivors require care that acknowledges their unique experiences and provides age-appropriate comfort.</p>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-hands-helping text-3xl text-brown mr-4" aria-hidden="true"></i>
+                                    <h3 class="text-xl font-bold text-orange">Critical Timing</h3>
+                                </div>
+                                <p>Traditional support systems may not reach children at the moment they need comfort most - during the immediate crisis period. Young survivors need items beyond basic necessities to emotionally process their experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
                     <div class="card text-center">
                         <div class="space-y-8">
                             <div>
                                 <div class="text-6xl font-bold text-orange">1 in 4</div>
         
-                                <div class="text-cream">children experience domestic violence in their lifetime</div>
+                                <div class="text-black" >children experience domestic violence in their lifetime</div>
                             </div>
                             <div>
                                 <div class="text-6xl font-bold text-orange">10M</div>
-                                <div class="text-cream">children live in homes with domestic violence in the US annually</div>
+                                <div class="text-black">children live in homes with domestic violence in the US annually</div>
                             </div>
                             <div class="mt-8">
                                 <i class="fas fa-shield-alt text-5xl text-orange mb-4"></i>
-                                <p class="text-cream text-lg">
+                                <p class="text-black text-lg">
                                     Children deserve immediate access to comfort, safety, and healing resources
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Our Approach Section -->
-    <section id="approach" class="section-padding bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="section-title" style="color: var(--primary-purple);">Our Solution: Comfort Kits</h2>
-                <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
-                    We provide carefully curated comfort kits filled with trauma-informed items designed to offer immediate emotional support and healing resources for children in crisis.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <div class="fade-in">
-                    <div class="text-center p-8 rounded-2xl" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-heart text-5xl text-orange mb-6"></i>
-                        <h3 class="text-2xl font-bold text-orange mb-4">Care</h3>
-                        <p>Demonstrating genuine concern and compassion for each child's wellbeing</p>
+        <!-- Our Approach Section -->
+        <section id="approach" class="section-padding gradient-bg text-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="section-title font-display text-orange">Our Solution: Comfort Kits</h2>
+                    <p class="text-xl max-w-4xl mx-auto text-cream">
+                        We provide carefully curated comfort kits filled with trauma-informed items designed to offer immediate emotional support and healing resources for children in crisis.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="fade-in">
+                        <div class="card text-center p-8 rounded-2xl h-full">
+                            <i class="fas fa-heart text-5xl text-orange mb-6" aria-hidden="true"></i>
+                            <h3 class="text-2xl font-bold text-orange mb-4 font-display">Care</h3>
+                            <p class="text-cream">Demonstrating genuine concern and compassion for each child's wellbeing</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="card text-center p-8 rounded-2xl h-full">
+                            <i class="fas fa-leaf text-5xl text-orange mb-6" aria-hidden="true"></i>
+                            <h3 class="text-2xl font-bold text-orange mb-4 font-display">Calm</h3>
+                            <p class="text-cream">Providing tools and resources that promote emotional regulation and peace</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="card text-center p-8 rounded-2xl h-full">
+                            <i class="fas fa-link text-5xl text-orange mb-6" aria-hidden="true"></i>
+                            <h3 class="text-2xl font-bold text-orange mb-4 font-display">Connection</h3>
+                            <p class="text-cream">Fostering healthy relationships and community support networks</p>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Kit Contents -->
                 <div class="fade-in">
-                    <div class="text-center p-8 rounded-2xl" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-leaf text-5xl text-orange mb-6"></i>
-                        <h3 class="text-2xl font-bold text-orange mb-4">Calm</h3>
-                        <p>Providing tools and resources that promote emotional regulation and peace</p>
-                    </div>
-                </div>
-                
-                <div class="fade-in">
-                    <div class="text-center p-8 rounded-2xl" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-link text-5xl text-orange mb-6"></i>
-                        <h3 class="text-2xl font-bold text-orange mb-4">Connection</h3>
-                        <p>Fostering healthy relationships and community support networks</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Kit Contents -->
-            <div class="fade-in">
-                <h3 class="text-3xl font-bold text-center mb-12" style="color: var(--primary-purple);">What's Inside Each Kit</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                       <i class="fas fa-heart text-3xl text-orange mb-4"></i>
-                        <h4 class="text-xl font-bold text-cream mb-3">Comfort Items</h4>
-                        <ul class="space-y-2 text-sm">
-                            <li>• Soft stuffed animals</li>
-                            <li>• Comfort Blanket</li>
-                            <li>• Worry beads</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-book text-3xl text-orange mb-4"></i>
-                        <h4 class="text-xl font-bold text-cream mb-3">Learning & Expression</h4>
-                        <ul class="space-y-2 text-sm">
-                            <li>• Activity book</li>
-                            <li>• Journals & stickers</li>
-                            <li>• Coloring and writing materials</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-hand-paper text-3xl text-orange mb-4"></i>
-                        <h4 class="text-xl font-bold text-cream mb-3">Sensory Support</h4>
-                        <ul class="space-y-2 text-sm">
-                            <li>• Stress balls & fidgets</li>
-                            <li>• Squishy animals</li>
-                            <li>• Soothing music</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="p-6 rounded-2xl" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-smile text-3xl text-orange mb-4"></i>
-                        <h4 class="text-xl font-bold text-cream mb-3">Hope & Connection</h4>
-                        <ul class="space-y-2 text-sm">
-                            <li>• Encouraging notes</li>
-                            <li>• Resource cards</li>
-                            <li>• Positive affirmations</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <!--our mission-->
-   <section id="about" class="section-padding gradient-bg text-white">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h2 class="section-title">Youth-Founded</h2>
-                    <p class="text-xl text-cream mb-8">
-                        The Safe Nest Project was born out of a simple but powerful idea: that children living through domestic violence deserve comfort, dignity, and care.
-                    </p>
-                    <p class="text-xl text-cream mb-8">
-                        As I started learning more about domestic violence and its impact on families, I was especially struck by how often children are left out of the conversation, even though they experience deep emotional trauma. I spoke with advocates and people working in this space, and realized there was a gap: children need more than just safety. They need to feel seen, supported, and soothed in moments of crisis.
-                    </p>
-                    <p class="text-xl text-cream mb-8">
-                        The Safe Nest Project is my way of responding to that gap. Through comfort kits filled with thoughtful items and emotional support resources, we aim to create small but meaningful moments of stability for children navigating unimaginably difficult situations.
-                    </p>
-                    <p class="text-xl text-cream mb-8"><em> - Aanya Raghavan, founder</em></p>
-                </div>
-                
-                <div class="fade-in">
-                    <div class="card text-center">
-                        <img src="arag.jpg" alt="Safe Nest Project Logo">
-                            </div>
-                            
+                    <h3 class="text-3xl font-bold text-center mb-12 font-display text-orange">What's Inside Each Kit</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="card p-6 rounded-2xl">
+                           <i class="fas fa-heart text-3xl text-orange mb-4" aria-hidden="true"></i>
+                            <h4 class="text-xl font-bold mb-3 text-orange">Comfort Items</h4>
+                            <ul class="space-y-2 text-sm text-cream">
+                                <li>• Soft stuffed animals</li>
+                                <li>• Comfort Blanket</li>
+                                <li>• Worry beads</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card p-6 rounded-2xl">
+                            <i class="fas fa-book text-3xl text-orange mb-4" aria-hidden="true"></i>
+                            <h4 class="text-xl font-bold mb-3 text-orange">Learning & Expression</h4>
+                            <ul class="space-y-2 text-sm text-cream">
+                                <li>• Activity book</li>
+                                <li>• Journals & stickers</li>
+                                <li>• Coloring and writing materials</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card p-6 rounded-2xl">
+                            <i class="fas fa-hand-paper text-3xl text-orange mb-4" aria-hidden="true"></i>
+                            <h4 class="text-xl font-bold mb-3 text-orange">Sensory Support</h4>
+                            <ul class="space-y-2 text-sm text-cream">
+                                <li>• Stress balls & fidgets</li>
+                                <li>• Squishy animals</li>
+                                <li>• Soothing music</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card p-6 rounded-2xl">
+                            <i class="fas fa-smile text-3xl text-orange mb-4" aria-hidden="true"></i>
+                            <h4 class="text-xl font-bold mb-3 text-orange">Hope & Connection</h4>
+                            <ul class="space-y-2 text-sm text-cream">
+                                <li>• Encouraging notes</li>
+                                <li>• Resource cards</li>
+                                <li>• Positive affirmations</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Partnership Section -->
-    <section id="partnership" class="section-padding bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="section-title" style="color: var(--primary-purple);">Community Partnership Model</h2>
-                <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
-                    We work with local organizations to ensure direct distribution to children who need support most.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-4 gap-6 mb-12">
-                <div class="fade-in">
-                    <div class="text-center p-6 rounded-2xl relative" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">1</div>
-                        <i class="fas fa-handshake text-4xl text-orange mb-4 mt-4"></i>
-                        <h4 class="text-lg font-bold text-cream mb-3">Partner Identification</h4>
-                        <p class="text-sm">Connect with local organizations serving affected families</p>
-                    </div>
-                </div>
-                
-                <div class="fade-in">
-                    <div class="text-center p-6 rounded-2xl relative" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">2</div>
-                        <i class="fas fa-clipboard-check text-4xl text-orange mb-4 mt-4"></i>
-                        <h4 class="text-lg font-bold text-cream mb-3">Needs Assessment</h4>
-                        <p class="text-sm">Understand specific needs and customize kit contents</p>
-                    </div>
-                </div>
-                
-                <div class="fade-in">
-                    <div class="text-center p-6 rounded-2xl relative" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">3</div>
-                        <i class="fas fa-shipping-fast text-4xl text-orange mb-4 mt-4"></i>
-                        <h4 class="text-lg font-bold text-cream mb-3">Direct Distribution</h4>
-                        <p class="text-sm">Deliver kits at the moment of greatest need</p>
-                    </div>
-                </div>
-                
-                <div class="fade-in">
-                    <div class="text-center p-6 rounded-2xl relative" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">4</div>
-                        <i class="fas fa-chart-line text-4xl text-orange mb-4 mt-4"></i>
-                        <h4 class="text-lg font-bold text-cream mb-3">Impact Tracking</h4>
-                        <p class="text-sm">Measure impact and continuously improve</p>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-             <a href="mailto:thesafenestproject@gmail.com" class="btn-primary mt-6 inline-block">Partner With Us</a>
-            </div>
-            
-            
-        </div>
-    </section>
+        </section>
 
-    <!-- Impact Section -->
-    <section id="impact" class="section-padding gradient-bg text-white">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h2 class="section-title">Creating Moments of Safety</h2>
-                    <p class="text-xl text-cream mb-8">
+        <!-- Youth-Founded Section -->
+        <section class="section-padding bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <h2 class="section-title font-display" style="color: var(--primary-purple);">Youth-Founded</h2>
+                        <p class="text-xl mb-8" style="color: var(--warm-brown);">
+                            The Safe Nest Project was born out of a simple but powerful idea: that children living through domestic violence deserve comfort, dignity, and care.
+                      <br>
+                      <br>
+                            As I started learning more about domestic violence and its impact on families, I was especially struck by how often children are left out of the conversation, even though they experience deep emotional trauma. I spoke with advocates and people working in this space, and realized there was a gap: children need more than just safety. They need to feel seen, supported, and soothed in moments of crisis.
+                      <br>
+                      <br>
+                            The Safe Nest Project is my way of responding to that gap. Through comfort kits filled with thoughtful items and emotional support resources, we aim to create small but meaningful moments of stability for children navigating unimaginably difficult situations.
+                        </p>
+                        <p class="text-lg italic" style="color: var(--warm-brown);">- Aanya Raghavan, Founder</p>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="card-white text-center">
+                            <img src="comfort-kit-display.jpg" alt="A beautifully arranged comfort kit showing teddy bear, journals, stickers, stress balls, worry beads, coloring materials, and encouraging note cards" class="w-full rounded-lg mb-6">
+                            <div class="card text-center">
+                                <h3 class="text-xl font-bold text-orange mb-2">What's Inside Each Kit</h3>
+                                <p style="color: var(--warm-brown);">Carefully curated items designed to provide immediate comfort and emotional support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet Our Team Section -->
+        <section id="team" class="section-padding" style="background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="section-title font-display text-orange">Meet Our Team</h2>
+                    <p class="text-xl max-w-4xl mx-auto text-cream">
+                        The passionate individuals leading The Safe Nest Project's mission to support children affected by domestic violence.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                    <div class="fade-in">
+                        <div class="card text-center">
+                            <div class="w-48 h-48 mx-auto mb-6 bg-gradient-to-br from-orange to-yellow-400 rounded-full flex items-center justify-center">
+                                <div class="w-44 h-44 bg-white rounded-full overflow-hidden">
+                                    <img src="aanyapfp.JPG" alt="Aanya Raghavan" class="w-full h-full object-cover">
+                                </div>
+                        </div>
+                            <h3 class="text-2xl font-bold text-orange mb-2">Aanya Raghavan</h3>
+                            <p class="text-lg text-cream mb-4">Founder & President</p>
+                            <p class="text-cream leading-relaxed">
+                                Aanya is a junior at the Liberal Arts and Science Academy (LASA) in Austin, Texas. Moved by the stigma around domestic violence in the South Asian community and inspired by conversations with survivors, she started The Safe Nest Project to support victims and help them feel seen and cared for. Outside of the nonprofit, Aanya is an avid policy debater on the national circuit and loves researching new topics and travelling to new cities for tournaments.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="fade-in">
+                      <div class="card text-center">
+                            <div class="w-48 h-48 mx-auto mb-6 bg-gradient-to-br from-orange to-yellow-400 rounded-full flex items-center justify-center">
+                                <div class="w-44 h-44 bg-white rounded-full overflow-hidden">
+                                    <img src="connerpfp.jpg" alt="Conner Praba" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-orange mb-2">Conner Praba</h3>
+                            <p class="text-lg text-cream mb-4">Vice President</p>
+                            <p class="text-cream leading-relaxed">
+                                Conner Praba is a high school junior at the Liberal Arts and Science Academy (LASA) in Austin, Texas. He developed an interest in politics through student advocacy focused on education and social justice issues. A lifelong Austinite, Conner is passionate about civic engagement with experience working as a youth advocate and congressional staffer. In his free time, he enjoys Mock Trial, spending time with his two dogs and cat, and binge-watching Netflix. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Section -->
+        <section id="partnership" class="section-padding bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="section-title font-display" style="color: var(--primary-purple);">Community Partnership Model</h2>
+                    <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
+                        We work with local organizations to ensure direct distribution to children who need support most.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-6 mb-12">
+                    <div class="fade-in">
+                        <div class="card-white text-center p-6 rounded-2xl relative h-full">
+                            <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">1</div>
+                            <i class="fas fa-handshake text-4xl text-orange mb-4 mt-4" aria-hidden="true"></i>
+                            <h4 class="text-lg font-bold mb-3" style="color: var(--primary-purple);">Partner Identification</h4>
+                            <p class="text-sm" style="color: var(--text-dark);">Connect with local organizations serving affected families</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="card-white text-center p-6 rounded-2xl relative h-full">
+                            <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">2</div>
+                            <i class="fas fa-clipboard-check text-4xl text-orange mb-4 mt-4" aria-hidden="true"></i>
+                            <h4 class="text-lg font-bold mb-3" style="color: var(--primary-purple);">Needs Assessment</h4>
+                            <p class="text-sm" style="color: var(--text-dark);">Understand specific needs and customize kit contents</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="card-white text-center p-6 rounded-2xl relative h-full">
+                            <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">3</div>
+                            <i class="fas fa-shipping-fast text-4xl text-orange mb-4 mt-4" aria-hidden="true"></i>
+                            <h4 class="text-lg font-bold mb-3" style="color: var(--primary-purple);">Direct Distribution</h4>
+                            <p class="text-sm" style="color: var(--text-dark);">Deliver kits at the moment of greatest need</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="card-white text-center p-6 rounded-2xl relative h-full">
+                            <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">4</div>
+                            <i class="fas fa-chart-line text-4xl text-orange mb-4 mt-4" aria-hidden="true"></i>
+                            <h4 class="text-lg font-bold mb-3" style="color: var(--primary-purple);">Impact Tracking</h4>
+                            <p class="text-sm" style="color: var(--text-dark);">Measure impact and continuously improve</p>
+                        </div>
+                    </div>
+                </div>
+                
+            
+            </div>
+        </section>
+
+        <!-- Our Partners Section -->
+        <section id="partners" class="section-padding" style="background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="section-title font-display text-orange">Our Partners</h2>
+                    <p class="text-xl max-w-4xl mx-auto text-cream">
+                        We're proud to work with dedicated organizations that share our commitment to supporting children and families affected by domestic violence.
+                    </p>
+                </div>
+                
+                <div class="max-w-2xl mx-auto">
+                    <div class="fade-in">
+                        <div class="affsacard text-center p-8">
+                            <div class="mb-6">
+                                <img src="afssa-logo.png" alt="Asian Family Support Services of Austin (AFSSA) Logo" class="max-w-full h-32 mx-auto object-contain">
+                            </div>
+                            <h3 class="text-2xl font-bold text-orange mb-4">Asian Family Support Services of Austin</h3>
+                            <p class="text-black leading-relaxed mb-6">
+                                AFSSA is our trusted partner in Austin, Texas, helping us reach and support Asian families and children affected by domestic violence. Together, we ensure that comfort kits reach those who need them most in culturally sensitive and appropriate ways.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12 fade-in">
+                    <p class="text-cream text-lg mb-6">Interested in partnering with us? Shoot us an email!</p>
+                    <a href="mailto: thesafenestproject@gmail.com" class="btn-primary">
+                        <i class="fas fa-handshake mr-2" aria-hidden="true"></i>
+                        Become a Partner
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section id="impact" class="section-padding bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="section-title font-display" style="color: var(--primary-purple);">Creating Moments of Safety</h2>
+                    <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
                         Our comfort kits create small but meaningful moments of safety and healing that can have lasting positive impacts on a child's recovery journey.
                     </p>
-                    
-                    <div class="space-y-6">
-                        <div class="card">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-clock text-2xl text-brown mr-4"></i>
-                                <h4 class="text-lg font-bold text-orange">Immediate Comfort</h4>
-                            </div>
-                            <p>Providing instant emotional support during the most vulnerable moments.</p>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-seedling text-2xl text-brown mr-4"></i>
-                                <h4 class="text-lg font-bold text-orange">Seeds of Hope</h4>
-                            </div>
-                            <p>Each kit plants seeds of hope that can grow into long-term healing.</p>
-                        </div>
-                        
-                        <div class="card">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-hand-holding-heart text-2xl text-brown mr-4"></i>
-                                <h4 class="text-lg font-bold text-orange">Tangible Care</h4>
-                            </div>
-                            <p>Physical reminders that children are valued and supported.</p>
-                        </div>
-                        <div class="card">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-hands-helping text-2xl text-brown mr-4"></i>
-                                <h4 class="text-lg font-bold text-orange">Heartfelt Support</h4>
-                            </div>
-                            <p>Emphasizing the personalized and intentional nature of each kit.</p>
-                        </div>
-                    </div>
-                    
-                    
                 </div>
-                
-                <div class="fade-in">
-                    <div class="card text-center">
-                        <i class="fas fa-shield-heart text-6xl text-orange mb-8"></i>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-4 bg-brown-light p-4 rounded-lg">
-                                <i class="fas fa-sun text-2xl text-brown"></i>
-                                <span>Brighter days ahead through hope and healing</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4 bg-brown-light p-4 rounded-lg">
-                                <i class="fas fa-home text-2xl text-brown"></i>
-                                <span>Creating a sense of safety and belonging</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4 bg-brown-light p-4 rounded-lg">
-                                <i class="fas fa-hands-helping text-2xl text-brown"></i>
-                                <span>Showing children they are not alone</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4 bg-brown-light p-4 rounded-lg">
-                                <i class="fas fa-rainbow text-2xl text-brown"></i>
-                                <span>Building resilience for the journey ahead</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4 bg-brown-light p-4 rounded-lg">
-                                <i class="fas fa-star text-2xl text-brown"></i>
-                                <span>Reminding every child of their inherent worth</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="md:flex md:space-x-8">
+    <!-- Text Boxes -->
+    <div class="space-y-6 md:flex-1">
+        <div class="card">
+            <div class="flex items-center mb-3">
+                <i class="fas fa-clock text-2xl text-brown mr-4"></i>
+                <h4 class="text-lg font-bold text-orange">Immediate Comfort</h4>
             </div>
+            <p>Providing instant emotional support during the most vulnerable moments.</p>
         </div>
-    </section>
+        
+        <div class="card">
+            <div class="flex items-center mb-3">
+                <i class="fas fa-hand-holding-heart text-2xl text-brown mr-4"></i>
+                <h4 class="text-lg font-bold text-orange">Tangible Care</h4>
+            </div>
+            <p>Physical reminders that children are valued and supported.</p>
+        </div>
+        
+        <div class="card">
+            <div class="flex items-center mb-3">
+                <i class="fas fa-hands-helping text-2xl text-brown mr-4"></i>
+                <h4 class="text-lg font-bold text-orange">Heartfelt Support</h4>
+            </div>
+            <p>Emphasizing the personalized and intentional nature of each kit.</p>
+        </div>
+    </div>
+    
+    <!-- Image -->
+<div class="fade-in md:flex-1 mt-8 md:mt-0">
+    <div class="card text-center">
+        <img src="children-hope.jpg" alt="Children's hands holding symbols of hope and healing - paper hearts, colorful drawings, and small flowers" class="w-full h-auto md:h-full object-cover rounded-lg mb-4">
+        <i class="fas fa-shield-heart text-6xl text-orange mt-4" aria-hidden="true"></i>
+    </div>
+</div>
+</div>
+            </div>
+            </div>
+        </section>
 
-    <!-- Get Involved Section -->
-    <section id="get-involved" class="section-padding bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="section-title" style="color: var(--primary-purple);">Join Our Mission</h2>
-                <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
-                    Together, we can ensure that every child affected by domestic violence receives the comfort, care, and hope they deserve during their most difficult moments.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="fade-in">
-                    <div class="text-center p-8 rounded-2xl h-full" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-heart text-5xl text-orange mb-6"></i>
-                        <h3 class="text-2xl font-bold text-cream mb-4">Donate Today</h3>
-                        <p class="mb-6">Help us create more comfort kits for children in crisis</p>
-                        <div class="text-lg font-bold text-orange">$12 funds one complete comfort kit</div>
-                        <a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors" class="btn-primary mt-6 inline-block">Donate Now</a>
-                    </div>
-                </div>
-                
-                <div class="fade-in">
-                    <div class="text-center p-8 rounded-2xl h-full" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-users text-5xl text-orange mb-6"></i>
-                        <h3 class="text-2xl font-bold text-cream mb-4">Become a Partner</h3>
-                        <p class="mb-6">Join our distribution network to reach more children</p>
-                        <div class="text-lg font-bold text-orange">Connect with families in your community</div>
-                        <a href="mailto:thesafenestproject@gmail.com" class="btn-primary mt-6 inline-block">Partner With Us</a>
-                    </div>
-                </div>
-                
-                <div class="fade-in">
-                    <div class="text-center p-8 rounded-2xl h-full" style="background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple)); color: white;">
-                        <i class="fas fa-share-alt text-5xl text-orange mb-6"></i>
-                        <h3 class="text-2xl font-bold text-cream mb-4">Spread the Word</h3>
-                        <p class="mb-6">Share our mission with your network and community</p>
-                        <div class="text-lg font-bold text-orange">Help us reach more supporters</div>
-                        <a href="#" class="btn-primary mt-6 inline-block">Share Now</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="fade-in">
-                <div class="text-center p-8 rounded-2xl" style="background: var(--accent-orange); color: var(--primary-purple);">
-                    <h3 class="text-2xl font-bold mb-4">Ready to Make a Difference?</h3>
-                    <p class="text-lg mb-6">
-                        Contact The Safe Nest Project today to learn how you can help create moments of safety and healing for children in need.
+        <!-- Get Involved Section -->
+        <section id="get-involved" class="section-padding gradient-bg text-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="section-title font-display text-orange">Join Our Mission</h2>
+                    <p class="text-xl max-w-4xl mx-auto text-cream">
+                        Together, we can ensure that every child affected by domestic violence receives the comfort, care, and hope they deserve during their most difficult moments.
                     </p>
-                    <div class="space-x-4">
-                        <a href="mailto:thesafenestproject@gmail.com" class="btn-secondary" style="color: var(--primary-purple); border-color: var(--primary-purple);">Email Us</a> 
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="fade-in">
+                        <div class="card text-center p-8 rounded-2xl h-full">
+                            <i class="fas fa-heart text-5xl text-orange mb-6" aria-hidden="true"></i>
+                            <h3 class="text-2xl font-bold mb-4 font-display text-orange">Donate Today</h3>
+                            <p class="mb-6 text-cream">Help us create more comfort kits for children in crisis</p>
+                            <div class="text-lg font-bold text-orange mb-6">$12 funds one complete comfort kit</div>
+                            <a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors?attribution_id=sl:4e75d642-8a84-4353-98a7-00ca1d565c0c" class="btn-primary">
+                                <i class="fas fa-donate mr-2" aria-hidden="true"></i>
+                                Donate Now
+                        </a>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="card text-center p-8 rounded-2xl h-full">
+                            <i class="fas fa-users text-5xl text-orange mb-6" aria-hidden="true"></i>
+                            <h3 class="text-2xl font-bold mb-4 font-display text-orange">Become a Partner</h3>
+                            <p class="mb-6 text-cream">Join our distribution network to reach more children</p>
+                            <div class="text-lg font-bold text-orange mb-6">Connect with families in your community</div>
+                            <a href="mailto: thesafenestproject@gmail.com" class="btn-primary">
+                                <i class="fas fa-handshake mr-2" aria-hidden="true"></i>
+                                Partner With Us
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in">
+                        <div class="card text-center p-8 rounded-2xl h-full">
+                            <i class="fas fa-share-alt text-5xl text-orange mb-6" aria-hidden="true"></i>
+                            <h3 class="text-2xl font-bold mb-4 font-display text-orange">Start A Chapter</h3>
+                            <p class="mb-6 text-cream">Help us reach more children in need</p>
+                            <div class="text-lg font-bold text-orange mb-6">Bring the Safe Nest Project to your community</div>
+                            <a href="mailto: thesafenestproject@gmail.com" class="btn-primary">
+                                <i class="fas fa-globe mr-2" aria-hidden="true"></i>
+                                Start A Chapter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="card text-center p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-4 font-display text-orange">Ready to Make a Difference?</h3>
+                        <p class="text-lg mb-6 text-cream">
+                            Contact The Safe Nest Project today to learn how you can help create moments of safety and healing for children in need. Email us at thesafenestproject@gmail.com.
+                        </p>
+                        <div class="space-x-4">
+                            <a href="#contact" class="btn-secondary">
+                                <i class="fas fa-envelope mr-2" aria-hidden="true"></i>
+                                Get In Touch
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        
 
     <!-- Footer -->
-    <footer class="gradient-bg text-white py-12">
+    <footer class="gradient-bg text-white py-12" role="contentinfo">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center space-x-4 mb-4">
-                        
+                        <div class="logo-container">
                             <img src="v3v3 (2).jpg" alt="Safe Nest Project Logo" class="logo-img">
-                      
+                        </div>
                         <span class="font-bold text-lg">The Safe Nest Project</span>
                     </div>
-                    <p class="text-cream">Creating comfort for young survivors of domestic violence through trauma-informed care.</p>
+                    <p class="text-cream mb-4">Creating comfort for young survivors of domestic violence through trauma-informed care.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/the-safe-nest-project/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:thesafenestproject@gmail.com" aria-label="Email">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
                 
                 <div>
@@ -628,38 +923,60 @@
                         <li><a href="#approach" class="text-cream hover:text-orange transition-colors">Our Approach</a></li>
                         <li><a href="#partnership" class="text-cream hover:text-orange transition-colors">Partnership</a></li>
                         <li><a href="#impact" class="text-cream hover:text-orange transition-colors">Impact</a></li>
+                        <li><a href="#privacy" class="text-cream hover:text-orange transition-colors">Privacy Policy</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="text-lg font-bold text-orange mb-4">Get Involved</h4>
                     <ul class="space-y-2">
-                        <li><a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors" class="text-cream hover:text-orange transition-colors">Donate</a></li>
-                        <li><a href="mailto:thesafenestproject@gmail.com" class="text-cream hover:text-orange transition-colors">Volunteer</a></li>
-                        <li><a href="mailto:thesafenestproject@gmail.com" class="text-cream hover:text-orange transition-colors">Partner</a></li>
-                        <li><a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors" class="text-cream hover:text-orange transition-colors">Spread the Word</a></li>
+                        <li><button onclick="openDonationModal()" class="text-cream hover:text-orange transition-colors text-left">Donate</button></li>
+                        <li><a href="#contact" class="text-cream hover:text-orange transition-colors">Volunteer</a></li>
+                        <li><a href="#contact" class="text-cream hover:text-orange transition-colors">Partner</a></li>
+                        <li><button onclick="shareWebsite()" class="text-cream hover:text-orange transition-colors text-left">Spread the Word</button></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="text-lg font-bold text-orange mb-4">Contact</h4>
                     <div class="space-y-2 text-cream">
-                        <p><i class="fas fa-envelope mr-2"></i> thesafenestproject@gmail.com</p>
+                        <p><i class="fas fa-envelope mr-2" aria-hidden="true"></i> thesafenestproject@gmail.com</p>
+                        
                        
-                        <div class="flex space-x-4 mt-4">
-                            <a href="https://www.linkedin.com/company/the-safe-nest-project/" class="text-cream hover:text-orange transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
-                        </div>
                     </div>
                 </div>
             </div>
             
             <div class="border-t border-purple-400 mt-8 pt-8 text-center">
                 <p class="text-cream">&copy; 2025 The Safe Nest Project. All rights reserved. | A youth-led nonprofit initiative.</p>
+                <p class="text-sm text-cream mt-2">
+                    <a href="#privacy" class="hover:text-orange transition-colors">Privacy Policy</a> | 
+                    <a href="#terms" class="hover:text-orange transition-colors">Terms of Service</a> | 
+                    <a href="#accessibility" class="hover:text-orange transition-colors">Accessibility</a>
+                </p>
             </div>
         </div>
     </footer>
 
+    
+
+    <!-- Success Message Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 text-center">
+            <i class="fas fa-check-circle text-5xl text-green-500 mb-4" aria-hidden="true"></i>
+            <h3 class="text-2xl font-bold mb-4 font-display" style="color: var(--primary-purple);">Thank You!</h3>
+            <p class="text-gray-600 mb-6" id="success-message">Your message has been sent successfully. We'll get back to you soon!</p>
+            <button onclick="closeSuccessModal()" class="btn-primary">
+                <i class="fas fa-check mr-2" aria-hidden="true"></i>
+                Close
+            </button>
+        </div>
+    </div>
+
     <script>
+        // Global variables
+        let selectedDonationAmount = 25;
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -679,7 +996,9 @@
         const mobileMenu = document.getElementById('mobile-menu');
         
         mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = mobileMenu.classList.contains('hidden');
             mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
         });
 
         // Navbar scroll effect
@@ -709,6 +1028,153 @@
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
+
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            
+            // Simulate form submission
+            console.log('Newsletter signup:', { firstName, lastName, email });
+            
+            // Show success message
+            showSuccessMessage('Thank you for joining our community! You\'ll receive updates on our impact and ways to help children in need.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            console.log('Contact form submission:', data);
+            
+            // Show success message
+            showSuccessMessage('Thank you for your message! We\'ll get back to you within 24 hours.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Donation modal functions
+        function openDonationModal() {
+            document.getElementById('donation-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDonationModal() {
+            document.getElementById('donation-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectDonationAmount(amount) {
+            selectedDonationAmount = amount;
+            document.getElementById('custom-amount').value = amount;
+            
+            // Update button styles
+            document.querySelectorAll('.donation-amount-btn').forEach(btn => {
+                btn.classList.remove('border-orange-500', 'bg-orange-50');
+                btn.classList.add('border-gray-200');
+            });
+            
+            event.target.closest('.donation-amount-btn').classList.add('border-orange-500', 'bg-orange-50');
+        }
+
+        function processDonation() {
+            const customAmount = document.getElementById('custom-amount').value;
+            const amount = customAmount || selectedDonationAmount;
+            
+            // Simulate donation processing
+            console.log('Processing donation:', { amount });
+            
+            // Close donation modal
+            closeDonationModal();
+            
+            // Show success message
+            showSuccessMessage(`Thank you for your generous donation of $${amount}! Your support helps us create comfort kits for children in need.`);
+        }
+
+        // Success modal functions
+        function showSuccessMessage(message) {
+            document.getElementById('success-message').textContent = message;
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Share website function
+        function shareWebsite() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'The Safe Nest Project',
+                    text: 'Creating comfort for young survivors of domestic violence',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    showSuccessMessage('Website URL copied to clipboard! Share it with your network to help us reach more supporters.');
+                });
+            }
+        }
+
+        // Safety exit function
+        document.getElementById('safety-exit').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Clear browser history
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, 'https://www.google.com');
+            }
+            
+            // Redirect to Google
+            window.location.replace('https://www.google.com');
+        });
+
+        // Keyboard navigation improvements
+        document.addEventListener('keydown', function(e) {
+            // ESC key closes modals
+            if (e.key === 'Escape') {
+                closeDonationModal();
+                closeSuccessModal();
+            }
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove loading class
+            document.body.classList.remove('loading');
+            
+            // Set initial donation amount
+            selectDonationAmount(25);
+        });
+
+        // Accessibility: Announce page changes for screen readers
+        function announceToScreenReader(message) {
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.className = 'sr-only';
+            announcement.textContent = message;
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => {
+                document.body.removeChild(announcement);
+            }, 1000);
+        }
     </script>
 </body>
 </html>
