@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - The Safe Nest Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: rgb(138, 43, 226);
+            --secondary-purple: #9932CC;
+            --accent-orange: #FFA500;
+            --warm-brown: #8B4513;
+            --light-brown: #D2691E;
+            --cream: #FFE4B5;
+            --success-green: #10B981;
+            --warning-red: #EF4444;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #ff8c00 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .navbar {
+            background: rgba(115, 66, 185, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-orange);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .hero-section {
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border: 3px solid var(--accent-orange);
+        }
+
+        .team-header {
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-orange);
+            margin: 0 auto 1rem;
+            object-fit: cover;
+        }
+
+        .team-name {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-title {
+            color: var(--cream);
+            font-size: 1rem;
+        }
+
+        .team-body {
+            padding: 2rem;
+        }
+
+        .commitment-section {
+            background: rgba(115, 66, 185, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .commitment-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse-icon {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-40">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-4" style="text-decoration: none;">
+                    <img src="v3v3 (2).jpg" alt="Safe Nest Project Logo" class="logo-img">
+                    <span class="text-white font-bold text-l" style="white-space: nowrap;">The Safe Nest Project</span>
+                </a>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="index.html#approach" class="nav-link">Our Approach</a>
+                    <div class="dropdown" style="position: relative; display: inline-block;">
+                        <a href="index.html#chapters" class="nav-link" style="display: inline-flex; align-items: center;">Our Chapters <i class="fas fa-chevron-down ml-1" style="font-size: 0.75rem;"></i></a>
+                        <div class="dropdown-content" style="display: none; position: absolute; background: white; min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-radius: 12px; z-index: 1000; margin-top: 8px;">
+                            <a href="austin.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Austin, TX</a>
+                            <a href="seattle.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Seattle, WA</a>
+                            <a href="taiwan.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Taipei, Taiwan</a>
+                            <a href="vancouver.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Vancouver, Canada</a>
+                        </div>
+                    </div>
+                    <a href="team.html" class="nav-link">Team</a>
+                    <a href="index.html#partnership" class="nav-link">Partnership</a>
+                    <a href="index.html#partners" class="nav-link">Partners</a>
+                    <a href="index.html#impact" class="nav-link">Impact</a>
+                    <a href="index.html#get-involved" class="nav-link">Get Involved</a>
+                    <a href="mailto:thesafenestproject@gmail.com" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex items-center justify-center text-white pt-24">
+        <div class="container mx-auto px-6 text-center py-16">
+            <div class="mb-6">
+                <img src="v3v3.jpg" alt="Safe Nest Project Logo" class="w-32 h-32 mx-auto rounded-full shadow-lg">
+            </div>
+            <h1 class="text-5xl font-display font-bold mb-4" style="color: var(--accent-orange);">Meet Our Team</h1>
+            <p class="text-2xl font-display" style="color: var(--cream);">Dedicated leaders working to support young survivors</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-7xl">
+            
+            <!-- Founder Section -->
+            <div class="mb-16">
+                <h2 class="text-4xl font-bold font-display mb-8 text-center" style="color: var(--primary-purple);">Founder & President</h2>
+                
+                <div class="team-card max-w-3xl mx-auto">
+                    <div class="team-header">
+                        <img src="aanya_new.jpg" alt="Aanya Raghavan" class="team-photo">
+                        <h3 class="team-name">Aanya Raghavan</h3>
+                        <p class="team-title">Founder & President</p>
+                    </div>
+                    <div class="team-body">
+                        <p class="text-gray-700 text-lg leading-relaxed">
+                            Aanya is a junior at the Liberal Arts and Science Academy (LASA) in Austin, Texas. 
+                            Moved by the stigma around domestic violence in the South Asian community and inspired 
+                            by conversations with survivors, she started The Safe Nest Project to support victims 
+                            and help them feel seen and cared for. Outside of the nonprofit, Aanya is an avid policy 
+                            debater on the national circuit and loves researching new topics and travelling to new 
+                            cities for tournaments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter Leadership Section -->
+            <div class="mb-16">
+                <h2 class="text-4xl font-display font-bold mb-12 text-center" style="color: var(--primary-purple);">Chapter Leadership</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    
+                    <!-- Conner Praba -->
+                    <div class="team-card">
+                        <div class="team-header">
+                            <img src="connerpfp.jpg" alt="Conner Praba" class="team-photo">
+                            <h3 class="team-name">Conner Praba</h3>
+                            <p class="team-title">Vice President, Texas Chapter</p>
+                        </div>
+                        <div class="team-body">
+                            <p class="text-gray-700">
+                                Conner Praba is a high school junior at the Liberal Arts and Science Academy (LASA) 
+                                in Austin, Texas. He developed an interest in politics through student advocacy focused 
+                                on education and social justice issues. A lifelong Austinite, Conner is passionate about 
+                                civic engagement with experience working as a youth advocate and congressional staffer. 
+                                In his free time, he enjoys Mock Trial, spending time with his two dogs and cat, and 
+                                binge-watching Netflix.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Sarah Maeng -->
+                    <div class="team-card">
+                        <div class="team-header">
+                            <img src="sarah.png" alt="Sarah Maeng" class="team-photo">
+                            <h3 class="team-name">Sarah Maeng</h3>
+                            <p class="team-title">President, Taipei Chapter</p>
+                        </div>
+                        <div class="team-body">
+                            <p class="text-gray-700">
+                               Sarah is a sophomore at the Taipei American School. Moved by the impact of domestic violence and inspired to make a difference, she started a chapter of The Safe Nest Project to bring the nonprofit to Taiwan and support children affected by domestic violence in her community. Outside of the nonprofit, Sarah is a national circuit policy debater, loves spending time with friends and family, and enjoys playing badminton.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Manya Sasanapuri -->
+                    <div class="team-card">
+                        <div class="team-header">
+                            <img src="manya.jpg" alt="Manya Sasanapuri" class="team-photo">
+                            <h3 class="team-name">Manya Sasanapuri</h3>
+                            <p class="team-title">President, Seattle Chapter</p>
+                        </div>
+                        <div class="team-body">
+                            <p class="text-gray-700">
+                                Manya is a student at Henry M. Jackson High School in Mill Creek, Washington. After learning about the impact domestic violence has on children and recognizing how often their emotional needs go unmet, she joined The Safe Nest Project to help bring comfort, stability, and care to young survivors in her community. As the Bothell Chapter Head, she works to build partnerships with local shelters and expand access to comfort kits for families in crisis. Outside of the nonprofit, Manya enjoys playing basketball, traveling, and spending time with friends.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Atana Raman -->
+                    <div class="team-card">
+                        <div class="team-header">
+                            <img src="atana_profile.png" alt="Atana Raman" class="team-photo">
+                            <h3 class="team-name">Atana Raman</h3>
+                            <p class="team-title">President, Vancouver Chapter</p>
+                        </div>
+                        <div class="team-body">
+                            <p class="text-gray-700">
+                                Atana is a sophomore at Crescent Heights Academy (CHA) in Surrey, BC. She is passionate about supporting kids affected by domestic violence and is driven by a commitment to advocacy and community care. She is excited that The Safe Nest Project has expanded into Canada, and she works to ensure young children feel supported, seen, and valued. In her free time, Atana enjoys participating in theater and volunteering at local events in her community.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Commitment Section -->
+            <div class="commitment-section rounded-3xl">
+                <div class="commitment-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-heart text-6xl pulse-icon" style="color: var(--accent-orange);"></i>
+                    </div>
+                    <h2 class="text-3xl font-display font-bold mb-4 text-center" style="color: var(--primary-purple);">Our Commitment</h2>
+                    <p class="text-lg text-gray-700 text-center leading-relaxed">
+                        Together, our team is dedicated to creating a world where every child affected by domestic violence 
+                        receives the comfort, care, and support they deserve. Through compassion, innovation, and unwavering 
+                        commitment, we're building a network of hope across communities worldwide.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Get Involved CTA -->
+            <div class="text-center mt-16">
+                <h2 class="text-3xl font-display font-bold mb-4" style="color: var(--primary-purple);">Join Our Mission</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    Want to make a difference in your community? Learn how you can get involved.
+                </p>
+                <a href="index.html#get-involved" class="btn-primary">
+                    <i class="fas fa-hands-helping mr-2"></i>
+                    Get Involved
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center" style="background: rgba(115, 66, 185, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+        <p class="text-white">&copy; 2025 The Safe Nest Project. All rights reserved.</p>
+        <p class="text-cream mt-2">
+            <a href="index.html" class="hover:text-orange-400 transition-colors">Back to Main Site</a>
+        </p>
+    </footer>
+
+    <script>
+        // Dropdown functionality
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        let hideTimeout;
+
+        if (dropdown && dropdownContent) {
+            dropdown.addEventListener('mouseenter', function() {
+                clearTimeout(hideTimeout);
+                dropdownContent.style.display = 'block';
+            });
+
+            dropdown.addEventListener('mouseleave', function() {
+                hideTimeout = setTimeout(function() {
+                    dropdownContent.style.display = 'none';
+                }, 200);
+            });
+        }
+    </script>
+</body>
+</html>
