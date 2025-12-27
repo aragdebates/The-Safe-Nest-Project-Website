@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida Chapter - The Safe Nest Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: rgb(138, 43, 226);
+            --secondary-purple: #9932CC;
+            --accent-orange: #FFA500;
+            --warm-brown: #8B4513;
+            --light-brown: #D2691E;
+            --cream: #FFE4B5;
+            --success-green: #10B981;
+            --warning-red: #EF4444;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+        }
+
+        .navbar {
+            background: rgba(115, 66, 185, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: white;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-orange);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .hero-section {
+            min-height: 400px;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+        }
+
+        .chapter-info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .president-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .president-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .president-header {
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .president-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-orange);
+            margin: 0 auto 1rem;
+            object-fit: cover;
+        }
+
+        .president-name {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .president-title {
+            color: var(--cream);
+            font-size: 1rem;
+        }
+
+        .president-body {
+            padding: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(138, 43, 226, 0.05);
+            border-radius: 10px;
+        }
+
+        .info-icon {
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, #ff8c00 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 165, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-40">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-4" style="text-decoration: none;">
+                    <img src="v3v3 (2).jpg" alt="Safe Nest Project Logo" class="logo-img">
+                    <span class="text-white font-bold text-l" style="white-space: nowrap;">The Safe Nest Project</span>
+                </a>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="index.html#approach" class="nav-link">Our Approach</a>
+                    <div class="dropdown" style="position: relative; display: inline-block;">
+                        <a href="index.html#chapters" class="nav-link" style="display: inline-flex; align-items: center;">Our Chapters <i class="fas fa-chevron-down ml-1" style="font-size: 0.75rem;"></i></a>
+                        <div class="dropdown-content" style="display: none; position: absolute; background: white; min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-radius: 12px; z-index: 1000; margin-top: 8px;">
+                            <a href="austin.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Austin, TX</a>
+                            <a href="seattle.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Seattle, WA</a>
+                            <a href="taiwan.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Taipei, Taiwan</a>
+                            <a href="vancouver.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Vancouver, Canada</a>
+                            <a href="florida.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Coconut Creek, FL</a>
+                        </div>
+                    </div>
+                    <a href="team.html" class="nav-link">Team</a>
+                    <a href="index.html#partnership" class="nav-link">Partnership</a>
+                    <a href="index.html#partners" class="nav-link">Partners</a>
+                    <a href="index.html#impact" class="nav-link">Impact</a>
+                    <a href="index.html#get-involved" class="nav-link">Get Involved</a>
+                    <a href="mailto:thesafenestproject@gmail.com" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex items-center justify-center text-white pt-24">
+        <div class="container mx-auto px-6 text-center py-16">
+            <div class="mb-6">
+                <i class="fas fa-mountain text-6xl text-orange-400"></i>
+            </div>
+            <h1 class="text-5xl font-display font-bold mb-4" style="color: var(--accent-orange);">South Florida Chapter</h1>
+            <p class="text-2xl font-display mb-2" style="color: var(--cream);">Florida, USA</p>
+            <p class="text-xl font-display" style="color: var(--cream);">North Broward Preparatory School</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            
+            <!-- Chapter Info -->
+            <div class="chapter-info-card mb-12">
+                <h2 class="text-3xl font-display font-bold mb-6" style="color: var(--primary-purple);">About Our Chapter</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="info-item">
+                        <i class="fas fa-school info-icon"></i>
+                        <div>
+                            <h3 class="font-bold text-lg">School</h3>
+                            <p>North Broward Preparatory School</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div>
+                            <h3 class="font-bold text-lg">Location</h3>
+                            <p>Coconut Creek, Florida, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter President -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-display font-bold mb-8 text-center" style="color: var(--primary-purple);">Chapter Leadership</h2>
+                
+                <div class="president-card max-w-2xl mx-auto">
+                    <div class="president-header">
+                        <img src="abby.png" alt="Abigail Merconchini" class="president-photo">
+                        <h3 class="president-name">Abigail Merconchini</h3>
+                        <p class="president-title">Chapter President</p>
+                    </div>
+                    <div class="president-body">
+                        <p class="text-gray-700 mb-4">
+                            Abigail is a sophomore at North Broward Preparatory School. Witnessing the effects of domestic violence inspired her to start a chapter of The Safe Nest Project, with the goal of supporting and uplifting children affected by domestic violence in her community. Outside of the non-profit, Abigail is a policy debater, member of Spirit Club and Math Club, dancer, and a volunteer at Hands on South Florida.
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Get Involved -->
+            <div class="text-center chapter-info-card">
+                <h2 class="text-3xl font-bold mb-4" style="color: var(--primary-purple);">Get Involved</h2>
+                <p class="text-lg mb-6 text-gray-700">
+                    Interested in supporting or learning more about our work in Florida?
+                </p>
+                <a href="mailto:thesafenestproject@gmail.com" class="btn-primary">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Contact Us
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center" style="background: rgba(115, 66, 185, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+        <p class="text-white">&copy; 2025 The Safe Nest Project. All rights reserved.</p>
+        <p class="text-cream mt-2">
+            <a href="index.html" class="hover:text-orange-400 transition-colors">Back to Main Site</a>
+        </p>
+    </footer>
+    <script>
+        // Dropdown functionality
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        let hideTimeout;
+
+        if (dropdown && dropdownContent) {
+            dropdown.addEventListener('mouseenter', function() {
+                clearTimeout(hideTimeout);
+                dropdownContent.style.display = 'block';
+            });
+
+            dropdown.addEventListener('mouseleave', function() {
+                hideTimeout = setTimeout(function() {
+                    dropdownContent.style.display = 'none';
+                }, 200);
+            });
+        }
+    </script>
+</body>
+</html>
