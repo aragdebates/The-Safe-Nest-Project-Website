@@ -4,307 +4,560 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Austin Chapter - The Safe Nest Project</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-purple: rgb(138, 43, 226);
-            --secondary-purple: #9932CC;
-            --accent-orange: #FFA500;
-            --warm-brown: #8B4513;
-            --light-brown: #D2691E;
-            --cream: #FFE4B5;
-            --success-green: #10B981;
-            --warning-red: #EF4444;
-            --text-dark: #1F2937;
-            --text-light: #6B7280;
+            --primary-purple: #6B21A8;
+            --secondary-purple: #7E22CE;
+            --accent-orange: #F97316;
+            --accent-orange-light: #FED7AA;
+            --text-dark: #1C1917;
+            --text-mid: #44403C;
+            --text-light: #78716C;
+            --bg-warm: #FFFBF5;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-        }
-        
-        .font-display {
-            font-family: 'Playfair Display', serif;
+            font-family: 'DM Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-warm);
             color: var(--text-dark);
         }
 
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--text-dark);
+        }
+
+        /* Navbar */
         .navbar {
-            background: rgba(115, 66, 185, 0.95);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(88, 28, 135, 0.97);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-sizing: border-box;
         }
 
-        .nav-link {
-            color: white;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-orange);
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
+        .navbar .logo {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-        }
-
-       
-        .hero-section {
-            min-height: 400px;
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
-        }
-
-        .chapter-info-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-        }
-
-        .president-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .president-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-       
-        .president-header {
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .president-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--accent-orange);
-            margin: 0 auto 1rem;
             object-fit: cover;
         }
 
-        .president-name {
+        .navbar .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: rgba(255, 255, 255, 0.88);
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background: rgba(249, 115, 22, 0.18);
+        }
+
+        .navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 10px 0;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .navbar .dropdown-content a {
+            color: var(--primary-purple);
+            padding: 8px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            border-radius: 0;
+        }
+
+        .navbar .dropdown-content a:hover {
+            background-color: #F5F3FF;
+        }
+
+        .navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 400px;
+            background: linear-gradient(150deg, #4C1370 0%, #6B21A8 50%, #7C3AED 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             color: white;
-            font-size: 1.5rem;
+            padding-top: 80px; /* To account for fixed navbar */
+        }
+
+        .hero .section-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin: 10px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .hero .hero-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero .special-badge {
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
             font-weight: bold;
-            margin-bottom: 0.5rem;
         }
 
-        .president-title {
-            color: var(--cream);
-            font-size: 1rem;
+        /* Section Styling */
+        .section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .president-body {
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title .section-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .orange-divider {
+            width: 48px;
+            height: 3px;
+            background: #F97316;
+            border-radius: 2px;
+            margin: 14px auto 22px;
+        }
+
+        /* Chapter Info Card */
+        .chapter-info-card {
+            background-color: white;
+            border-radius: 16px;
+            border: 1px solid #EDE9FE;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
             padding: 2rem;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        .info-item {
+        .chapter-info-item {
+            background: rgba(107, 33, 168, 0.05);
+            border-radius: 10px;
+            padding: 15px;
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: rgba(138, 43, 226, 0.05);
-            border-radius: 10px;
         }
 
-        .info-icon {
+        .chapter-info-item .icon {
             color: var(--accent-orange);
             font-size: 1.5rem;
-            margin-right: 1rem;
-            min-width: 30px;
+            margin-right: 15px;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-orange) 0%, #ff8c00 100%);
+        .chapter-info-item .text strong {
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .chapter-info-item .text span {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+        }
+
+        /* Leadership Grid */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* President/Leadership Cards */
+        .leader-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .leader-card .card-header {
+            background: linear-gradient(150deg, #4C1370 0%, #6B21A8 55%, #7C3AED 100%);
+            padding: 40px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .leader-card .card-header img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #F97316;
+            margin-bottom: 15px;
+        }
+
+        .leader-card .card-header .name {
+            font-family: 'DM Serif Display', serif;
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            font-weight: 600;
+            font-size: 1.8rem;
+            margin: 0;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 165, 0, 0.3);
+        .leader-card .card-header .title {
+            color: #FED7AA;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .leader-card .card-body {
+            padding: 1.75rem 2rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+        }
+
+        /* Get Involved Card */
+        .get-involved-card {
+            background-color: white;
+            border-radius: 16px;
+            border: 1px solid #EDE9FE;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 60px;
+        }
+
+        .get-involved-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .get-involved-card p {
+            color: var(--text-mid);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .get-involved-card .button {
+            background: #F97316;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .get-involved-card .button:hover {
+            background: #E06412;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(150deg, #4C1370 0%, #6B21A8 50%, #7C3AED 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer .footer-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--accent-orange-light);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Fade-in effect */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(88, 28, 135, 0.97);
+                position: absolute;
+                top: 64px;
+                left: 0;
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .nav-links li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .navbar .nav-links a {
+                padding: 15px;
+                width: 100%;
+                display: block;
+            }
+
+            .navbar .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .chapter-info-card {
+                grid-template-columns: 1fr;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar fixed top-0 w-full z-40">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center space-x-4" style="text-decoration: none;">
-                    <img src="v3v3 (2).jpg" alt="Safe Nest Project Logo" class="logo-img">
-                    <span class="text-white font-bold text-l" style="white-space: nowrap;">The Safe Nest Project</span>
-                </a>
-                <div class="hidden md:flex space-x-6 items-center">
-                    <a href="index.html#about" class="nav-link">About</a>
-                    <a href="index.html#approach" class="nav-link">Our Approach</a>
-                    <div class="dropdown" style="position: relative; display: inline-block;">
-                        <a href="index.html#chapters" class="nav-link" style="display: inline-flex; align-items: center;">Our Chapters <i class="fas fa-chevron-down ml-1" style="font-size: 0.75rem;"></i></a>
-                        <div class="dropdown-content" style="display: none; position: absolute; background: white; min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-radius: 12px; z-index: 1000; margin-top: 8px;">
-                            <a href="austin.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Austin, TX</a>
-                            <a href="seattle.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Seattle, WA</a>
-                            <a href="taiwan.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Taipei, Taiwan</a>
-                            <a href="vancouver.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Vancouver, Canada</a>
-                            <a href="florida.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Coconut Creek, FL</a>
-                            <a href="chicago.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Chicago, IL</a>
-                            <a href="cali.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Fremont, CA</a>
-                        </div>
-                    </div>
-                    <a href="team.html" class="nav-link">Team</a>
-                    <a href="index.html#partnership" class="nav-link">Partnership</a>
-                    <a href="index.html#partners" class="nav-link">Partners</a>
-                    <a href="index.html#impact" class="nav-link">Impact</a>
-                    <a href="index.html#get-involved" class="nav-link">Get Involved</a>
-                    <a href="mailto:thesafenestproject@gmail.com" class="nav-link">Contact</a>
+    <nav class="navbar">
+        <img src="v3v3 (2).jpg" alt="The Safe Nest Project Logo" class="logo">
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#approach">Our Approach</a></li>
+            <li class="dropdown">
+                <a href="index.html#chapters">Our Chapters <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="austin.html">Austin, TX</a>
+                    <a href="seattle.html">Seattle, WA</a>
+                    <a href="taiwan.html">Taipei, Taiwan</a>
+                    <a href="vancouver.html">Vancouver, Canada</a>
+                    <a href="florida.html">Coconut Creek, FL</a>
+                    <a href="chicago.html">Chicago, IL</a>
+                    <a href="cali.html">Fremont, CA</a>
+                    <a href="nyc.html">New York City, NY</a>
+                </div>
+            </li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="index.html#partnership">Partnership</a></li>
+            <li><a href="index.html#sponsors">Sponsors</a></li>
+            <li><a href="index.html#partners">Partners</a></li>
+            <li><a href="index.html#impact">Impact</a></li>
+            <li><a href="index.html#get-involved">Get Involved</a></li>
+            <li><a href="mailto:thesafenestproject@gmail.com">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero fade-in">
+        <i class="fas fa-star hero-icon"></i>
+        <span class="section-label">Our Chapter</span>
+        <h1>Austin Chapter</h1>
+        <p>Texas, USA</p>
+        <p>Liberal Arts and Science Academy</p>
+        <span class="special-badge">★ Founding Chapter ★</span>
+    </section>
+
+    <section class="section">
+        <div class="chapter-info-card fade-in">
+            <div class="chapter-info-item">
+                <i class="fas fa-school icon"></i>
+                <div class="text">
+                    <strong>School</strong>
+                    <span>Liberal Arts and Science Academy (LASA)</span>
+                </div>
+            </div>
+            <div class="chapter-info-item">
+                <i class="fas fa-map-marker-alt icon"></i>
+                <div class="text">
+                    <strong>Location</strong>
+                    <span>Austin, Texas, USA</span>
                 </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section flex items-center justify-center text-white pt-24">
-        <div class="container mx-auto px-6 text-center py-16">
-            <div class="mb-6">
-                <i class="fas fa-star text-6xl text-orange-400"></i>
+        <div class="section-title fade-in">
+            <br>
+            <br>
+            <span class="section-label">Meet the Team</span>
+            <h2>Our Leadership</h2>
+            <div class="orange-divider"></div>
+        </div>
+
+        <div class="leadership-grid">
+            <div class="leader-card fade-in">
+                <div class="card-header">
+                    <img src="aanya_new.jpg" alt="Aanya Raghavan">
+                    <h3 class="name">Aanya Raghavan</h3>
+                    <p class="title">Founder & President</p>
+                </div>
+                <div class="card-body">
+                    Aanya is a junior at the Liberal Arts and Science Academy (LASA) in Austin, Texas. Moved by the stigma around domestic violence in the South Asian community and inspired by conversations with survivors, she started The Safe Nest Project to support victims and help them feel seen and cared for. Outside of the nonprofit, Aanya is an avid policy debater on the national circuit and loves researching new topics and travelling to new cities for tournaments.
+                </div>
             </div>
-            <h1 class="text-5xl font-display font-bold mb-4" style="color: var(--accent-orange);">Austin Chapter</h1>
-            <p class="text-2xl  font-display mb-2" style="color: var(--cream);">Texas, USA</p>
-            <p class="text-xl font-display" style="color: var(--cream);">Liberal Arts and Science Academy</p>
-            <p class="text-lg font-display mt-4" style="color: var(--accent-orange); font-weight: 600;">★ Founding Chapter ★</p>
+            <div class="leader-card fade-in">
+                <div class="card-header">
+                    <img src="chopped_diya.png" alt="Diya Vijay">
+                    <h3 class="name">Diya Vijay</h3>
+                    <p class="title">Marketing Director, Texas Chapter</p>
+                </div>
+                <div class="card-body">
+                    Diya is a junior at the Liberal Arts and Science Academy in Austin, Texas. As the Regional Marketing Director of the Safe Nest Project, she is excited to help make a meaningful difference in the lives of children impacted by domestic violence by raising awareness and supporting the organization's mission, helping those who need it the most. In her free time, Diya enjoys swimming, reading, traveling, and catching up on movies.
+                </div>
+            </div>
+        </div>
+
+        <div class="get-involved-card fade-in">
+            <div class="section-title">
+                <span class="section-label">Support Us</span>
+                <h3>Get Involved</h3>
+                <div class="orange-divider"></div>
+            </div>
+            <p>Interested in supporting our Austin chapter or learning more about our work in Central Texas?</p>
+            <a href="mailto:thesafenestproject@gmail.com" class="button">Contact Us</a>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6 max-w-6xl">
-            
-            <!-- Chapter Info -->
-            <div class="chapter-info-card mb-12">
-                <h2 class="text-3xl font-display font-bold mb-6" style="color: var(--primary-purple);">About Our Chapter</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="info-item">
-                        <i class="fas fa-school info-icon"></i>
-                        <div>
-                            <h3 class="font-bold text-lg">School</h3>
-                            <p>Liberal Arts and Science Academy (LASA)</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt info-icon"></i>
-                        <div>
-                            <h3 class="font-bold text-lg">Location</h3>
-                            <p>Austin, Texas, USA</p>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <!-- Chapter Leadership -->
-            <div class="mb-12">
-                <h2 class="text-3xl font-display font-bold mb-8 text-center" style="color: var(--primary-purple);">Chapter Leadership</h2>
-                
-                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <!-- Aanya Raghavan -->
-                    <div class="president-card">
-                        <div class="president-header">
-                            <img src="aanya_new.jpg" alt="Aanya Raghavan" class="president-photo">
-                            <h3 class="president-name">Aanya Raghavan</h3>
-                            <p class="president-title">Founder & President</p>
-                        </div>
-                        <div class="president-body">
-                            <p class="text-gray-700">
-                                Aanya is a junior at the Liberal Arts and Science Academy (LASA) in Austin, Texas. 
-                                Moved by the stigma around domestic violence in the South Asian community and inspired 
-                                by conversations with survivors, she started The Safe Nest Project to support victims 
-                                and help them feel seen and cared for. Outside of the nonprofit, Aanya is an avid policy 
-                                debater on the national circuit and loves researching new topics and travelling to new 
-                                cities for tournaments.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Diya Vijay -->
-                    <div class="president-card">
-                        <div class="president-header">
-                            <img src="chopped_diya.png" alt="Diya Vijay" class="president-photo">
-                            <h3 class="president-name">Diya Vijay</h3>
-                            <p class="president-title">Marketing Director, Texas Chapter</p>
-                        </div>
-                        <div class="president-body">
-                            <p class="text-gray-700">
-                                Diya is a junior at the Liberal Arts and Science Academy in Austin, Texas. As the Regional Marketing Director of the Safe Nest Project, she is excited to help make a meaningful difference in the lives of children impacted by domestic violence by raising awareness and supporting the organization’s mission, helping those who need it the most.  In her free time, Diya enjoys swimming, reading, traveling, and catching up on movies.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Get Involved -->
-            <div class="text-center chapter-info-card">
-                <h2 class="text-3xl font-bold mb-4" style="color: var(--primary-purple);">Get Involved</h2>
-                <p class="text-lg mb-6 text-gray-700">
-                    Interested in supporting our Austin chapter or learning more about our work in Central Texas?
-                </p>
-                <a href="mailto:thesafenestproject@gmail.com" class="btn-primary">
-                    <i class="fas fa-envelope mr-2"></i>
-                    Contact Us
-                </a>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-8 text-center" style="background: rgba(115, 66, 185, 0.95);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-        <p class="text-white">&copy; 2025 The Safe Nest Project. All rights reserved.</p>
-        <p class="text-cream mt-2">
-            <a href="index.html" class="hover:text-orange-400 transition-colors">Back to Main Site</a>
-        </p>
+    <footer class="footer fade-in">
+        <img src="v3v3 (2).jpg" alt="The Safe Nest Project Logo" class="footer-logo">
+        <p>&copy; 2023 The Safe Nest Project. All rights reserved.</p>
+        <p><a href="index.html">Back to Main Site</a></p>
     </footer>
+
     <script>
-        // Dropdown functionality
-        const dropdown = document.querySelector('.dropdown');
-        const dropdownContent = document.querySelector('.dropdown-content');
-        let hideTimeout;
+        // Dropdown hover functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.navbar .dropdown');
+            const dropdownContent = document.querySelector('.navbar .dropdown-content');
+            let dropdownTimeout;
 
-        if (dropdown && dropdownContent) {
-            dropdown.addEventListener('mouseenter', function() {
-                clearTimeout(hideTimeout);
-                dropdownContent.style.display = 'block';
-            });
+            if (dropdown) {
+                dropdown.addEventListener('mouseenter', function() {
+                    clearTimeout(dropdownTimeout);
+                    dropdownContent.style.display = 'block';
+                });
 
-            dropdown.addEventListener('mouseleave', function() {
-                hideTimeout = setTimeout(function() {
-                    dropdownContent.style.display = 'none';
-                }, 200);
+                dropdown.addEventListener('mouseleave', function() {
+                    dropdownTimeout = setTimeout(function() {
+                        dropdownContent.style.display = 'none';
+                    }, 180); // 180ms delay
+                });
+            }
+
+            // Intersection Observer for fade-in effect
+            const fadeInElements = document.querySelectorAll('.fade-in');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeInElements.forEach(element => {
+                observer.observe(element);
             });
-        }
+        });
     </script>
 </body>
 </html>

@@ -29,542 +29,381 @@
     <!-- External Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- DM Sans (body) + DM Serif Display (headings) — editorial, human, non-AI feel -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-purple: rgb(138, 43, 226);
-            --secondary-purple: #9932CC;
-            --accent-orange: #FFA500;
-            --warm-brown: #8B4513;
-            --light-brown: #D2691E;
-            --cream: #FFE4B5;
-            --success-green: #10B981;
-            --warning-red: #EF4444;
-            --text-dark: #1F2937;
-            --text-light: #6B7280;
+            --primary-purple: #6B21A8;
+            --secondary-purple: #7E22CE;
+            --accent-orange: #F97316;
+            --accent-orange-light: #FED7AA;
+            --warm-brown: #78350F;
+            --light-brown: #92400E;
+            --cream: #FEF3C7;
+            --success-green: #059669;
+            --warning-red: #DC2626;
+            --text-dark: #1C1917;
+            --text-mid: #44403C;
+            --text-light: #78716C;
+            --bg-warm: #FFFBF5;
+            --bg-section: #F9F5FF;
         }
-        
-        * {
-            scroll-behavior: smooth;
-        }
-        
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
             color: var(--text-dark);
+            background: #fff;
         }
-        
+
         .font-display {
-            font-family: 'Playfair Display', serif;
+            font-family: 'DM Serif Display', serif;
         }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
-        }
-        
-        .hero-section {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 50%, #7B68EE 100%);
-            position: relative;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.1);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .section-padding {
-            padding: 80px 0;
-        }
-        
-        .btn-primary {
-            background: var(--accent-orange);
-            color: var(--primary-purple);
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4);
-            color: var(--primary-purple);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent-orange);
-            border: 2px solid var(--accent-orange);
-            padding: 13px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-secondary:hover {
-            background: var(--accent-orange);
-            color: var(--primary-purple);
-            transform: translateY(-2px);
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid var(--light-brown);
-            padding: 30px;
-            border-left: 9px solid var(--light-brown);
-            transition: transform 0.3s ease;
-        }
-        .affsacard {
-            background: white;
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid var(--light-brown);
-            padding: 30px;
-            border-left: 9px solid var(--light-brown);
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .card-white {
-            background: white;
-            border: 1px solid #E5E7EB;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .card-white:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .text-orange {
-            color: var(--accent-orange);
-        }
-        
-        .text-cream {
-            color: var(--cream);
-        }
-        
-        .text-brown {
-            color: var(--light-brown);
-        }
-        
-        .bg-brown-light {
-            background: rgba(139, 69, 19, 0.2);
-        }
-        
+
+        /* ── Navbar ── */
         .navbar {
-            background: rgba(111, 62, 184, 0.95);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(88, 28, 135, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        
         .navbar.scrolled {
-            background: rgba(111, 62, 184, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(76, 19, 120, 0.99);
+            box-shadow: 0 2px 24px rgba(0,0,0,0.18);
         }
-        
         .nav-link {
-            color: white;
+            color: rgba(255,255,255,0.88);
             text-decoration: none;
-            padding: 1px 5px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
+            padding: 4px 10px;
+            border-radius: 6px;
+            transition: color 0.2s, background 0.2s;
             font-weight: 500;
+            font-size: 0.88rem;
+            letter-spacing: 0.01em;
             white-space: nowrap;
         }
-        
         .nav-link:hover {
-            background: rgba(255, 165, 0, 0.2);
-            color: var(--accent-orange);
+            color: #fff;
+            background: rgba(249, 115, 22, 0.18);
         }
-        
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
             position: absolute;
-            background: rgba(111, 62, 184, 0.98);
-            min-width: 180px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            border-radius: 10px;
+            background: #fff;
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+            border-radius: 12px;
             z-index: 1000;
-            margin-top: 5px;
+            margin-top: 6px;
             overflow: hidden;
+            border: 1px solid #E5E7EB;
         }
-        
         .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
+            color: var(--primary-purple);
+            padding: 11px 18px;
             text-decoration: none;
             display: block;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            transition: background 0.2s, color 0.2s;
         }
-        
         .dropdown-content a:hover {
-            background: rgba(255, 165, 0, 0.2);
+            background: #F5F3FF;
             color: var(--accent-orange);
         }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        .dropdown-toggle {
-            cursor: pointer;
-        }
-        
-        .chapter-card {
-            background: white;
-            border-radius: 25px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 3px solid transparent;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .chapter-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
-        }
-        
-        .chapter-card:hover::before {
-            opacity: 1;
-        }
-        
-        .chapter-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent-orange);
-            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
-        }
-        
-        .chapter-card-content {
-            position: relative;
-            z-index: 1;
-            transition: color 0.4s ease;
-        }
-        
-        .chapter-card:hover .chapter-card-content {
-            color: white;
-        }
-        
-        .chapter-card:hover .chapter-card-content .chapter-icon {
-            color: var(--accent-orange);
-            transform: scale(1.1);
-        }
-        
-        .chapter-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            transition: all 0.4s ease;
-            color: var(--primary-purple);
-        }
-        
-        .chapter-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--primary-purple);
-            transition: color 0.4s ease;
-        }
-        
-        .chapter-card:hover .chapter-title {
-            color: var(--accent-orange);
-        }
-        
-        .chapter-location {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 15px;
-            transition: color 0.4s ease;
-        }
-        
-        .chapter-card:hover .chapter-location {
-            color: var(--cream);
-        }
-        
-        .chapter-card:hover .chapter-description {
-            color: white !important;
-        }
-        
-        .chapter-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 25px;
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* ── Buttons ── */
+        .btn-primary {
             background: var(--accent-orange);
-            color: var(--primary-purple);
-            border-radius: 25px;
+            color: #fff;
+            padding: 13px 28px;
+            border-radius: 8px;
             font-weight: 600;
+            font-size: 0.95rem;
             text-decoration: none;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(10px);
+            display: inline-block;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px rgba(249,115,22,0.28);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.01em;
         }
-        
-        .chapter-card:hover .chapter-link {
-            opacity: 1;
-            transform: translateY(0);
+        .btn-primary:hover {
+            background: #EA6C0A;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 18px rgba(249,115,22,0.38);
+            color: #fff;
         }
-        
-        .chapter-link:hover {
-            background: white;
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.7);
+            padding: 11px 26px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: #fff;
+            transform: translateY(-1px);
+        }
+        .btn-outline-purple {
+            background: transparent;
             color: var(--primary-purple);
-            transform: translateY(-2px);
+            border: 2px solid var(--primary-purple);
+            padding: 11px 26px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
         }
-        
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-orange);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 30px;
+        .btn-outline-purple:hover {
+            background: var(--primary-purple);
+            color: #fff;
+            transform: translateY(-1px);
         }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .logo-container {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+
+        /* ── Hero ── */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(150deg, #4C1370 0%, #6B21A8 45%, #7C3AED 100%);
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
-        .logo-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        
-        .trust-indicator {
-            background: var(--success-green);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-block;
-            margin: 10px 0;
-        }
-        
-        .safety-exit {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--warning-red);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-        }
-        
-        .safety-exit:hover {
-            background: #DC2626;
-            transform: scale(1.05);
-        }
-        
-        .impact-counter {
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--accent-orange);
-            line-height: 1;
-        }
-        
-        .newsletter-form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin: 40px 0;
-        }
-        
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #E5E7EB;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            margin-bottom: 15px;
-        }
-        
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-purple);
-            box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
-        }
-        
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            color: white;
-            margin: 0 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent-orange);
-            color: var(--primary-purple);
-            transform: translateY(-2px);
-        }
-        
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-padding {
-                padding: 60px 0;
-            }
-            
-            .impact-counter {
-                font-size: 3rem;
-            }
-            
-            .safety-exit {
-                top: 10px;
-                right: 10px;
-                padding: 8px 12px;
-                font-size: 0.9rem;
-            }
-        }
-        
-        /* Loading animation */
-        .loading {
-            opacity: 0;
-            animation: fadeIn 0.5s ease-in-out forwards;
-        }
-        
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-        
-        /* Accessibility improvements */
-        .sr-only {
+        .hero-section::before {
+            content: '';
             position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
+            inset: 0;
+            background: url('hero-image.jpg') center/cover no-repeat;
+            opacity: 0.13;
+        }
+        .hero-content { position: relative; z-index: 2; }
+
+        /* ── Section spacing ── */
+        .section-padding { padding: 88px 0; }
+
+        /* ── Section titles ── */
+        .section-label {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.6rem;
+            line-height: 1.18;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+        }
+        .section-title-light {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.6rem;
+            line-height: 1.18;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        /* ── Cards ── */
+        .card-plain {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #EDE9FE;
+            padding: 28px;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .card-plain:hover {
+            box-shadow: 0 8px 32px rgba(107,33,168,0.10);
+            transform: translateY(-3px);
+        }
+        .card-purple {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 16px;
+            padding: 28px;
+            transition: background 0.25s, transform 0.25s;
+        }
+        .card-purple:hover {
+            background: rgba(255,255,255,0.13);
+            transform: translateY(-3px);
+        }
+        .card-accent-left {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #EDE9FE;
+            border-left: 5px solid var(--accent-orange);
+            padding: 28px;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .card-accent-left:hover {
+            box-shadow: 0 8px 28px rgba(107,33,168,0.09);
+            transform: translateY(-3px);
+        }
+        .card-white-shadow {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .card-white-shadow:hover {
+            box-shadow: 0 10px 36px rgba(107,33,168,0.13);
+            transform: translateY(-3px);
+        }
+
+        /* ── Partner / Sponsor cards ── */
+        .partner-card {
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid #E8E4F3;
+            padding: 28px 20px;
+            text-align: center;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .partner-card:hover {
+            box-shadow: 0 6px 24px rgba(107,33,168,0.12);
+            transform: translateY(-3px);
+        }
+        .sponsor-card {
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid #FED7AA;
+            padding: 22px 18px;
+            text-align: center;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .sponsor-card:hover {
+            box-shadow: 0 6px 24px rgba(249,115,22,0.14);
+            transform: translateY(-3px);
+        }
+
+        /* ── Chapter cards ── */
+        .chapter-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.35s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 3px 16px rgba(0,0,0,0.07);
+            cursor: pointer;
+            position: relative;
             overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
         }
-        
-        /* Focus styles for keyboard navigation */
-        .nav-link:focus,
-        .btn-primary:focus,
-        .btn-secondary:focus {
-            outline: 3px solid var(--accent-orange);
-            outline-offset: 2px;
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, #7C3AED 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
         }
-        
-    
-        /* Chapters carousel (single row with arrows) */
+        .chapter-card:hover::before { opacity: 1; }
+        .chapter-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: var(--accent-orange);
+            box-shadow: 0 16px 40px rgba(107,33,168,0.25);
+        }
+        .chapter-card-content {
+            position: relative;
+            z-index: 1;
+            transition: color 0.35s ease;
+        }
+        .chapter-card:hover .chapter-card-content { color: #fff; }
+        .chapter-icon {
+            font-size: 3.2rem;
+            margin-bottom: 18px;
+            color: var(--primary-purple);
+            transition: color 0.35s, transform 0.35s;
+        }
+        .chapter-card:hover .chapter-icon {
+            color: var(--accent-orange);
+            transform: scale(1.08);
+        }
+        .chapter-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: var(--primary-purple);
+            transition: color 0.35s;
+        }
+        .chapter-card:hover .chapter-title { color: var(--accent-orange); }
+        .chapter-location {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            transition: color 0.35s;
+        }
+        .chapter-card:hover .chapter-location { color: rgba(255,255,255,0.8); }
+        .chapter-card:hover .chapter-description { color: rgba(255,255,255,0.85) !important; }
+        .chapter-link {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 9px 22px;
+            background: var(--accent-orange);
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: all 0.25s;
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        .chapter-card:hover .chapter-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .chapter-link:hover {
+            background: #fff;
+            color: var(--primary-purple);
+        }
+
+        /* ── Chapters carousel ── */
         .chapters-carousel {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 14px;
         }
-
         .chapters-arrow {
-            width: 52px;
-            height: 52px;
-            border-radius: 999px;
-            border: 2px solid rgba(255, 165, 0, 0.7);
-            background: rgba(255, 255, 255, 0.12);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(249,115,22,0.6);
+            background: rgba(255,255,255,0.1);
             color: var(--accent-orange);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
             flex: 0 0 auto;
-        
             position: relative;
             z-index: 5;
-            pointer-events: auto;
         }
-
         .chapters-arrow:hover {
-            transform: translateY(-1px);
-            background: rgba(255, 255, 255, 0.18);
-            border-color: rgba(255, 165, 0, 1);
+            background: rgba(255,255,255,0.18);
+            border-color: var(--accent-orange);
+            transform: scale(1.06);
         }
-
-        .chapters-arrow:focus {
-            outline: 3px solid var(--accent-orange);
-            outline-offset: 2px;
-        }
-
         .chapters-viewport {
             flex: 1 1 auto;
             overflow-x: auto;
@@ -572,104 +411,267 @@
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding: 10px 2px 18px; /* space for hover lift */
-        
-            position: relative;
-            z-index: 1;
+            padding: 10px 2px 18px;
         }
-
-        /* Hide scrollbar (still scrollable via trackpad/touch) */
         .chapters-viewport::-webkit-scrollbar { display: none; }
         .chapters-viewport { scrollbar-width: none; -ms-overflow-style: none; }
-
         .chapters-track {
             display: flex;
             flex-wrap: nowrap;
-            gap: 28px;
+            gap: 24px;
             align-items: stretch;
             width: max-content;
         }
-
-        /* Keep chapter cards same size and in one row */
         .chapters-track .chapter-card {
-            flex: 0 0 min(280px, 85vw);
-            width: min(280px, 85vw);
+            flex: 0 0 min(270px, 82vw);
+            width: min(270px, 82vw);
             scroll-snap-align: start;
         }
 
-        @media (max-width: 640px) {
-            .chapters-carousel { gap: 10px; }
-            .chapters-arrow { width: 46px; height: 46px; }
-            .chapters-track { gap: 18px; }
+        /* ── Impact counters ── */
+        .impact-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.6rem;
+            color: var(--accent-orange);
+            line-height: 1;
         }
 
-</style>
+        /* ── Trust badge ── */
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: #fff;
+            padding: 7px 18px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── Safety exit ── */
+        .safety-exit {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            background: var(--warning-red);
+            color: #fff;
+            padding: 9px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            z-index: 9999;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 3px 12px rgba(220,38,38,0.3);
+        }
+        .safety-exit:hover {
+            background: #B91C1C;
+            transform: scale(1.04);
+        }
+
+        /* ── Logo ── */
+        .logo-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* ── Social links ── */
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: #fff;
+            margin: 0 4px;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            font-size: 0.95rem;
+        }
+        .social-links a:hover {
+            background: var(--accent-orange);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* ── Divider ── */
+        .divider-orange {
+            width: 52px;
+            height: 3px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+            margin: 16px 0 24px;
+        }
+        .divider-orange-center {
+            width: 52px;
+            height: 3px;
+            background: var(--accent-orange);
+            border-radius: 2px;
+            margin: 16px auto 24px;
+        }
+
+        /* ── Fade in ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Forms ── */
+        .form-input {
+            width: 100%;
+            padding: 11px 16px;
+            border: 1.5px solid #DDD6FE;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            margin-bottom: 14px;
+            color: var(--text-dark);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 0 3px rgba(107,33,168,0.1);
+        }
+
+        /* ── Accessibility ── */
+        .sr-only {
+            position: absolute; width: 1px; height: 1px;
+            padding: 0; margin: -1px; overflow: hidden;
+            clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+        }
+        .nav-link:focus, .btn-primary:focus, .btn-secondary:focus {
+            outline: 3px solid var(--accent-orange);
+            outline-offset: 2px;
+        }
+
+        /* ── Step numbers ── */
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-orange);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* ── Gradient backgrounds ── */
+        .bg-purple-gradient {
+            background: linear-gradient(150deg, #4C1370 0%, #6B21A8 50%, #7C3AED 100%);
+        }
+        .bg-warm-section {
+            background: var(--bg-warm);
+        }
+        .bg-light-purple {
+            background: var(--bg-section);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .section-title, .section-title-light { font-size: 2rem; }
+            .impact-number { font-size: 2.8rem; }
+            .hero-section h1 { font-size: 2.6rem; }
+            .chapters-carousel { gap: 8px; }
+            .chapters-arrow { width: 42px; height: 42px; }
+            .chapters-track { gap: 16px; }
+        }
+
+        /* ── Loading ── */
+        body.loading { opacity: 0; }
+        body { animation: pageLoad 0.4s ease forwards; }
+        @keyframes pageLoad { to { opacity: 1; } }
+    </style>
 </head>
 <body class="loading">
-    
 
-    <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white p-2 rounded">
+    <!-- Skip to main content -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white p-2 rounded z-50">
         Skip to main content
     </a>
 
+    <!-- Safety Exit -->
+   
+
     <!-- Navigation -->
     <nav class="navbar fixed top-0 w-full z-40" role="navigation" aria-label="Main navigation">
-        <div class="container mx-auto px-6 py-4">
+        <div class="container mx-auto px-6 py-3">
             <div class="flex items-center justify-between">
-                <a href="index.html" id="logo-link" class="flex items-center space-x-4" style="text-decoration: none; cursor: pointer;">
+                <a href="index.html" id="logo-link" class="flex items-center space-x-3" style="text-decoration:none;">
                     <img src="v3v3 (2).jpg" alt="Safe Nest Project Logo" class="logo-img">
-                   
-                    <span class="text-white font-bold text-l" style="white-space: nowrap;">The Safe Nest Project</span>
+                    <span class="text-white font-semibold text-sm tracking-wide" style="white-space:nowrap;">The Safe Nest Project</span>
                 </a>
-                <div class="hidden md:flex space-x-6 items-center">
+                <div class="hidden md:flex space-x-1 items-center">
                     <a href="#about" class="nav-link">About</a>
                     <a href="#approach" class="nav-link">Our Approach</a>
-                    <div class="dropdown" style="position: relative; display: inline-block;">
-                        <a href="#chapters" class="nav-link" style="display: inline-flex; align-items: center;">Our Chapters <i class="fas fa-chevron-down ml-1" style="font-size: 0.75rem;"></i></a>
-                        <div class="dropdown-content" style="display: none; position: absolute; background: white; min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-radius: 12px; z-index: 1000; margin-top: 8px;">
-                            <a href="austin.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Austin, TX</a>
-                            <a href="seattle.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Seattle, WA</a>
-                            <a href="taiwan.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Taipei, Taiwan</a>
-                            <a href="vancouver.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Vancouver, Canada</a>
-                            <a href="florida.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Coconut Creek, FL</a>
-                            <a href="chicago.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Chicago, IL</a>
-                            <a href="cali.html" style="color: var(--primary-purple); padding: 12px 16px; text-decoration: none; display: block; transition: all 0.3s ease;">Fremont, CA</a>
+                    <div class="dropdown">
+                        <a href="#chapters" class="nav-link" style="display:inline-flex;align-items:center;">
+                            Our Chapters <i class="fas fa-chevron-down ml-1" style="font-size:0.65rem;opacity:0.7;"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="austin.html">Austin, TX</a>
+                            <a href="seattle.html">Seattle, WA</a>
+                            <a href="taiwan.html">Taipei, Taiwan</a>
+                            <a href="vancouver.html">Vancouver, Canada</a>
+                            <a href="florida.html">Coconut Creek, FL</a>
+                            <a href="chicago.html">Chicago, IL</a>
+                            <a href="cali.html">Fremont, CA</a>
+                            <a href="nyc.html">New York City, NY</a>
                         </div>
                     </div>
                     <a href="team.html" class="nav-link">Team</a>
                     <a href="#partnership" class="nav-link">Partnership</a>
+                    <a href="#sponsors" class="nav-link">Sponsors</a>
                     <a href="#partners" class="nav-link">Partners</a>
                     <a href="#impact" class="nav-link">Impact</a>
                     <a href="#get-involved" class="nav-link">Get Involved</a>
                     <a href="mailto:thesafenestproject@gmail.com" class="nav-link">Contact</a>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white" aria-label="Toggle mobile menu" aria-expanded="false">
-                        <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
+                    <button id="mobile-menu-btn" class="text-white p-1" aria-label="Toggle mobile menu" aria-expanded="false">
+                        <i class="fas fa-bars text-xl" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4" role="menu">
-                <div class="flex flex-col space-y-2">
+            <div id="mobile-menu" class="hidden md:hidden mt-3 pb-2" role="menu">
+                <div class="flex flex-col space-y-1">
                     <a href="#about" class="nav-link" role="menuitem">About</a>
                     <a href="#approach" class="nav-link" role="menuitem">Our Approach</a>
                     <div>
-                        <a href="#chapters" class="nav-link" id="mobile-chapters-toggle" role="menuitem" style="display: flex; align-items: center; justify-content: space-between;">
+                        <a href="#chapters" class="nav-link" id="mobile-chapters-toggle" role="menuitem" style="display:flex;align-items:center;justify-content:space-between;">
                             Our Chapters
-                            <i class="fas fa-chevron-down" id="mobile-chapters-icon" style="font-size: 0.75rem; transition: transform 0.3s ease;"></i>
+                            <i class="fas fa-chevron-down" id="mobile-chapters-icon" style="font-size:0.65rem;transition:transform 0.3s;"></i>
                         </a>
-                        <div id="mobile-chapters-dropdown" class="hidden flex flex-col space-y-1 ml-4 mt-2">
-                            <a href="austin.html" class="nav-link" role="menuitem" style="font-size: 0.9rem;">Austin, TX</a>
-                            <a href="seattle.html" class="nav-link" role="menuitem" style="font-size: 0.9rem;">Seattle, WA</a>
-                            <a href="taiwan.html" class="nav-link" role="menuitem" style="font-size: 0.9rem;">Taipei, Taiwan</a>
-                            <a href="vancouver.html" class="nav-link" role="menuitem" style="font-size: 0.9rem;">Vancouver, Canada</a>
-                           <!-- <a href="georgia.html" class="nav-link" role="menuitem" style="font-size: 0.9rem;">Atlanta, GA</a>-->
+                        <div id="mobile-chapters-dropdown" class="hidden flex flex-col space-y-1 ml-4 mt-1">
+                            <a href="austin.html" class="nav-link" role="menuitem" style="font-size:0.85rem;">Austin, TX</a>
+                            <a href="seattle.html" class="nav-link" role="menuitem" style="font-size:0.85rem;">Seattle, WA</a>
+                            <a href="taiwan.html" class="nav-link" role="menuitem" style="font-size:0.85rem;">Taipei, Taiwan</a>
+                            <a href="vancouver.html" class="nav-link" role="menuitem" style="font-size:0.85rem;">Vancouver, Canada</a>
+                            <a href="florida.html" class="nav-link" role="menuitem" style="font-size:0.85rem;">Coconut Creek, FL</a>
+                            <a href="chicago.html" class="nav-link" role="menuitem" style="font-size:0.85rem;">Chicago, IL</a>
+                            <a href="cali.html" class="nav-link" role="menuitem" style="font-size:0.85rem;">Fremont, CA</a>
+                            <a href="nyc.html" class="nav-link" role="menuitem" style="font-size:0.85rem;">New York City, NY</a>
                         </div>
                     </div>
                     <a href="team.html" class="nav-link" role="menuitem">Team</a>
                     <a href="#partnership" class="nav-link" role="menuitem">Partnership</a>
+                    <a href="#sponsors" class="nav-link" role="menuitem">Sponsors</a>
                     <a href="#partners" class="nav-link" role="menuitem">Partners</a>
                     <a href="#impact" class="nav-link" role="menuitem">Impact</a>
                     <a href="#get-involved" class="nav-link" role="menuitem">Get Involved</a>
@@ -680,180 +682,175 @@
     </nav>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section id="home" class="hero-section flex items-center justify-center text-white" role="banner" style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.8) 0%, rgba(153, 50, 204, 0.8) 50%, rgba(123, 104, 238, 0.8) 100%), url('hero-image.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
-            <div class="hero-content container mx-auto px-6 text-center">
+
+        <!-- ── Hero ── -->
+        <section id="home" class="hero-section text-white" role="banner">
+            <div class="hero-content container mx-auto px-6 text-center py-24">
                 <div class="fade-in">
-                    <div class="mb-8">
-                        <img src="v3v3.jpg" alt="Safe Nest Project Logo" class="w-32 h-32 mx-auto rounded-full shadow-lg">
-                    </div>
-                    <h1 class="text-5xl md:text-6xl font-bold font-display text-orange mb-6">The Safe Nest Project</h1>
-                    <p class="text-2xl text-cream mb-4 font-display">Creating Comfort for Young Survivors</p>
-                    <div class="trust-indicator">
-                        <i class="fas fa-shield-alt mr-2" aria-hidden="true"></i>
+                    <img src="v3v3.jpg" alt="Safe Nest Project Logo" class="w-28 h-28 mx-auto rounded-full shadow-xl mb-8" style="border:3px solid rgba(255,255,255,0.3);">
+                    <div class="trust-badge mb-6">
+                        <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         A Youth-Led 501(c)(3) Nonprofit
                     </div>
-                    <p class="text-xl max-w-4xl mx-auto mb-12 leading-relaxed" style="margin-top: 2rem;">
-                    Supporting 4,500 children by 2030 through trauma-informed care
+                    <h1 class="font-display text-5xl md:text-7xl mb-5" style="letter-spacing:-0.01em;">The Safe Nest Project</h1>
+                    <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto" style="color:rgba(255,255,255,0.82);font-weight:300;">
+                        Creating comfort and healing for young survivors of domestic violence.
                     </p>
-                    <div class="space-x-4">
+                    <p class="text-base mb-10" style="color:rgba(255,255,255,0.6);">
+                        Supporting 4,500 children by 2030 through trauma-informed care
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
                         <a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors?attribution_id=sl:4e75d642-8a84-4353-98a7-00ca1d565c0c" class="btn-primary" aria-describedby="donate-description">
-                            <i class="fas fa-heart mr-2" aria-hidden="true"></i>
-                            Support Our Mission
+                            <i class="fas fa-heart mr-2" aria-hidden="true"></i>Support Our Mission
                         </a>
                         <a href="#about" class="btn-secondary">
-                            <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>
-                            Learn More
+                            <i class="fas fa-arrow-down mr-2" aria-hidden="true"></i>Learn More
                         </a>
                     </div>
-                    <div id="donate-description" class="sr-only">
-                        Donate to help us create comfort kits for children affected by domestic violence
-                    </div>
+                    <span id="donate-description" class="sr-only">Donate to help us create comfort kits for children affected by domestic violence</span>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- ── About ── -->
         <section id="about" class="section-padding bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="section-title font-display" style="color: var(--primary-purple);">The Challenge We Address</h2>
-                    <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
+                <div class="text-center mb-14 fade-in">
+                    <span class="section-label">The Challenge</span>
+                    <h2 class="section-title">The Challenge We Address</h2>
+                    <div class="divider-orange-center"></div>
+                    <p class="text-lg max-w-3xl mx-auto" style="color:var(--text-mid);">
                         Every year, millions of children witness or experience domestic violence, leaving lasting emotional scars that require specialized care and support.
                     </p>
                 </div>
-                
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="fade-in">
-                        <div class="space-y-6">
-                            <div class="card">
-                                <div class="flex items-center mb-4">
-                                    <i class="fas fa-heart-broken text-3xl text-brown mr-4" aria-hidden="true"></i>
-                                    <h3 class="text-xl font-bold text-orange">Immediate Need</h3>
+
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    <div class="space-y-5 fade-in">
+                        <div class="card-accent-left">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-heart-broken text-2xl mt-1" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-1" style="color:var(--primary-purple);">Immediate Need</h3>
+                                    <p style="color:var(--text-mid);">Children in crisis situations often lack access to immediate emotional support resources designed specifically for their developmental needs.</p>
                                 </div>
-                                <p>Children in crisis situations often lack access to immediate emotional support resources and comforting items designed specifically for their developmental needs.</p>
                             </div>
-                            
-                            <div class="card">
-                                <div class="flex items-center mb-4">
-                                    <i class="fas fa-child text-3xl text-brown mr-4" aria-hidden="true"></i>
-                                    <h3 class="text-xl font-bold text-orange">Specialized Care</h3>
+                        </div>
+                        <div class="card-accent-left">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-child text-2xl mt-1" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-1" style="color:var(--primary-purple);">Specialized Care</h3>
+                                    <p style="color:var(--text-mid);">Young survivors require care that acknowledges their unique experiences and provides age-appropriate comfort.</p>
                                 </div>
-                                <p>Young survivors require care that acknowledges their unique experiences and provides age-appropriate comfort.</p>
                             </div>
-                            
-                            <div class="card">
-                                <div class="flex items-center mb-4">
-                                    <i class="fas fa-hands-helping text-3xl text-brown mr-4" aria-hidden="true"></i>
-                                    <h3 class="text-xl font-bold text-orange">Critical Timing</h3>
+                        </div>
+                        <div class="card-accent-left">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-hands-helping text-2xl mt-1" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                                <div>
+                                    <h3 class="text-lg font-semibold mb-1" style="color:var(--primary-purple);">Critical Timing</h3>
+                                    <p style="color:var(--text-mid);">Traditional support systems may not reach children at the moment they need comfort most. Young survivors need items beyond basic necessities to emotionally process their experience.</p>
                                 </div>
-                                <p>Traditional support systems may not reach children at the moment they need comfort most - during the immediate crisis period. Young survivors need items beyond basic necessities to emotionally process their experience.</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="fade-in">
-                    <div class="card text-center">
-                        <div class="space-y-8">
-                            <div>
-                                <div class="text-6xl font-bold text-orange">1 in 4</div>
-        
-                                <div class="text-black" >children experience domestic violence in their lifetime</div>
+                        <div class="card-plain text-center py-10 px-8">
+                            <div class="grid grid-cols-2 gap-8 mb-8">
+                                <div>
+                                    <div class="impact-number">1 in 4</div>
+                                    <p class="text-sm mt-2" style="color:var(--text-mid);">children experience domestic violence in their lifetime</p>
+                                </div>
+                                <div>
+                                    <div class="impact-number">10M</div>
+                                    <p class="text-sm mt-2" style="color:var(--text-mid);">children live in homes with domestic violence in the US annually</p>
+                                </div>
                             </div>
-                            <div>
-                                <div class="text-6xl font-bold text-orange">10M</div>
-                                <div class="text-black">children live in homes with domestic violence in the US annually</div>
-                            </div>
-                            <div class="mt-8">
-                                <i class="fas fa-shield-alt text-5xl text-orange mb-4"></i>
-                                <p class="text-black text-lg">
-                                    Children deserve immediate access to comfort, safety, and healing resources
-                                </p>
+                            <div class="pt-6" style="border-top:1px solid #EDE9FE;">
+                                <i class="fas fa-shield-alt text-4xl mb-3" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                                <p style="color:var(--text-mid);">Children deserve immediate access to comfort, safety, and healing resources.</p>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </section>
 
-        <!-- Our Approach Section -->
-        <section id="approach" class="section-padding gradient-bg text-white">
+        <!-- ── Our Approach ── -->
+        <section id="approach" class="section-padding bg-purple-gradient text-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="section-title font-display text-orange">Our Solution: Comfort Kits</h2>
-                    <p class="text-xl max-w-4xl mx-auto text-cream">
+                <div class="text-center mb-14 fade-in">
+                    <span class="section-label" style="color:var(--accent-orange-light);">What We Do</span>
+                    <h2 class="section-title-light">Our Solution: Comfort Kits</h2>
+                    <div class="divider-orange-center"></div>
+                    <p class="text-lg max-w-3xl mx-auto" style="color:rgba(255,255,255,0.78);">
                         We provide carefully curated comfort kits filled with trauma-informed items designed to offer immediate emotional support and healing resources for children in crisis.
                     </p>
                 </div>
-                
-                <div class="grid md:grid-cols-3 gap-8 mb-16">
+
+                <div class="grid md:grid-cols-3 gap-6 mb-14">
                     <div class="fade-in">
-                        <div class="card text-center p-8 rounded-2xl h-full">
-                            <i class="fas fa-heart text-5xl text-orange mb-6" aria-hidden="true"></i>
-                            <h3 class="text-2xl font-bold text-orange mb-4 font-display">Care</h3>
-                            <p class="text-cream">Demonstrating genuine concern and compassion for each child's wellbeing</p>
+                        <div class="card-purple text-center p-8 h-full">
+                            <i class="fas fa-heart text-4xl mb-5" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h3 class="font-display text-2xl mb-3">Care</h3>
+                            <p style="color:rgba(255,255,255,0.75);">Demonstrating genuine concern and compassion for each child's wellbeing</p>
                         </div>
                     </div>
-                    
                     <div class="fade-in">
-                        <div class="card text-center p-8 rounded-2xl h-full">
-                            <i class="fas fa-leaf text-5xl text-orange mb-6" aria-hidden="true"></i>
-                            <h3 class="text-2xl font-bold text-orange mb-4 font-display">Calm</h3>
-                            <p class="text-cream">Providing tools and resources that promote emotional regulation and peace</p>
+                        <div class="card-purple text-center p-8 h-full">
+                            <i class="fas fa-leaf text-4xl mb-5" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h3 class="font-display text-2xl mb-3">Calm</h3>
+                            <p style="color:rgba(255,255,255,0.75);">Providing tools and resources that promote emotional regulation and peace</p>
                         </div>
                     </div>
-                    
                     <div class="fade-in">
-                        <div class="card text-center p-8 rounded-2xl h-full">
-                            <i class="fas fa-link text-5xl text-orange mb-6" aria-hidden="true"></i>
-                            <h3 class="text-2xl font-bold text-orange mb-4 font-display">Connection</h3>
-                            <p class="text-cream">Fostering healthy relationships and community support networks</p>
+                        <div class="card-purple text-center p-8 h-full">
+                            <i class="fas fa-link text-4xl mb-5" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h3 class="font-display text-2xl mb-3">Connection</h3>
+                            <p style="color:rgba(255,255,255,0.75);">Fostering healthy relationships and community support networks</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Kit Contents -->
                 <div class="fade-in">
-                    <h3 class="text-3xl font-bold text-center mb-12 font-display text-orange">What's Inside Each Kit</h3>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="card p-6 rounded-2xl">
-                           <i class="fas fa-heart text-3xl text-orange mb-4" aria-hidden="true"></i>
-                            <h4 class="text-xl font-bold mb-3 text-orange">Comfort Items</h4>
-                            <ul class="space-y-2 text-sm text-cream">
-                                <li>• Soft stuffed animals</li>
-                                <li>• Comfort Blanket</li>
-                                <li>• Worry beads</li>
+                    <h3 class="font-display text-3xl text-center mb-10" style="color:#fff;">What's Inside Each Kit</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <div class="card-purple p-6 rounded-2xl">
+                            <i class="fas fa-heart text-2xl mb-3" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h4 class="font-semibold text-lg mb-3">Comfort Items</h4>
+                            <ul class="space-y-1 text-sm" style="color:rgba(255,255,255,0.72);">
+                                <li>Soft stuffed animals</li>
+                                <li>Comfort blanket</li>
+                                <li>Worry beads</li>
                             </ul>
                         </div>
-                        
-                        <div class="card p-6 rounded-2xl">
-                            <i class="fas fa-book text-3xl text-orange mb-4" aria-hidden="true"></i>
-                            <h4 class="text-xl font-bold mb-3 text-orange">Learning & Expression</h4>
-                            <ul class="space-y-2 text-sm text-cream">
-                                <li>• Activity book</li>
-                                <li>• Journals & stickers</li>
-                                <li>• Coloring and writing materials</li>
+                        <div class="card-purple p-6 rounded-2xl">
+                            <i class="fas fa-book text-2xl mb-3" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h4 class="font-semibold text-lg mb-3">Learning & Expression</h4>
+                            <ul class="space-y-1 text-sm" style="color:rgba(255,255,255,0.72);">
+                                <li>Activity book</li>
+                                <li>Journals & stickers</li>
+                                <li>Coloring & writing materials</li>
                             </ul>
                         </div>
-                        
-                        <div class="card p-6 rounded-2xl">
-                            <i class="fas fa-hand-paper text-3xl text-orange mb-4" aria-hidden="true"></i>
-                            <h4 class="text-xl font-bold mb-3 text-orange">Sensory Support</h4>
-                            <ul class="space-y-2 text-sm text-cream">
-                                <li>• Stress balls & cubes</li>
-                                <li>• Squishy animals</li>
-                                <li>• Soothing fidgets</li>
+                        <div class="card-purple p-6 rounded-2xl">
+                            <i class="fas fa-hand-paper text-2xl mb-3" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h4 class="font-semibold text-lg mb-3">Sensory Support</h4>
+                            <ul class="space-y-1 text-sm" style="color:rgba(255,255,255,0.72);">
+                                <li>Stress balls & cubes</li>
+                                <li>Squishy animals</li>
+                                <li>Soothing fidgets</li>
                             </ul>
                         </div>
-                        
-                        <div class="card p-6 rounded-2xl">
-                            <i class="fas fa-smile text-3xl text-orange mb-4" aria-hidden="true"></i>
-                            <h4 class="text-xl font-bold mb-3 text-orange">Hope & Connection</h4>
-                            <ul class="space-y-2 text-sm text-cream">
-                                <li>• Encouraging notes</li>
-                                <li>• Resource cards</li>
-                                <li>• Positive affirmations</li>
+                        <div class="card-purple p-6 rounded-2xl">
+                            <i class="fas fa-smile text-2xl mb-3" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h4 class="font-semibold text-lg mb-3">Hope & Connection</h4>
+                            <ul class="space-y-1 text-sm" style="color:rgba(255,255,255,0.72);">
+                                <li>Encouraging notes</li>
+                                <li>Resource cards</li>
+                                <li>Positive affirmations</li>
                             </ul>
                         </div>
                     </div>
@@ -861,30 +858,31 @@
             </div>
         </section>
 
-        <!-- Youth-Founded Section -->
-        <section class="section-padding bg-white">
+        <!-- ── Youth-Founded ── -->
+        <section class="section-padding bg-warm-section">
             <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="grid md:grid-cols-2 gap-14 items-center">
                     <div class="fade-in">
-                        <h2 class="section-title font-display" style="color: var(--primary-purple);">Youth-Founded</h2>
-                        <p class="text-xl mb-8" style="color: var(--warm-brown);">
+                        <span class="section-label">Our Story</span>
+                        <h2 class="section-title">Youth-Founded</h2>
+                        <div class="divider-orange"></div>
+                        <p class="text-lg mb-5" style="color:var(--text-mid);">
                             The Safe Nest Project was born out of a simple but powerful idea: that children living through domestic violence deserve comfort, dignity, and care.
-                      <br>
-                      <br>
+                        </p>
+                        <p class="text-lg mb-5" style="color:var(--text-mid);">
                             As I started learning more about domestic violence and its impact on families, I was especially struck by how often children are left out of the conversation, even though they experience deep emotional trauma. I spoke with advocates and people working in this space, and realized there was a gap: children need more than just safety. They need to feel seen, supported, and soothed in moments of crisis.
-                      <br>
-                      <br>
+                        </p>
+                        <p class="text-lg mb-5" style="color:var(--text-mid);">
                             The Safe Nest Project is my way of responding to that gap. Through comfort kits filled with thoughtful items and emotional support resources, we aim to create small but meaningful moments of stability for children navigating unimaginably difficult situations.
                         </p>
-                        <p class="text-lg italic" style="color: var(--warm-brown);">- Aanya Raghavan, Founder</p>
+                        <p class="font-display text-lg italic" style="color:var(--primary-purple);">— Aanya Raghavan, Founder</p>
                     </div>
-                    
                     <div class="fade-in">
-                        <div class="card-white text-center">
-                            <img src="comfort-kit-display.jpg" alt="A beautifully arranged comfort kit showing teddy bear, journals, stickers, stress balls, worry beads, coloring materials, and encouraging note cards" class="w-full rounded-lg mb-6">
-                            <div class="card text-center">
-                                <h3 class="text-xl font-bold text-orange mb-2">What's Inside Each Kit</h3>
-                                <p style="color: var(--warm-brown);">Carefully curated items designed to provide immediate comfort and emotional support</p>
+                        <div class="card-white-shadow overflow-hidden">
+                            <img src="comfort-kit-display.jpg" alt="A beautifully arranged comfort kit showing teddy bear, journals, stickers, stress balls, worry beads, coloring materials, and encouraging note cards" class="w-full rounded-xl mb-5">
+                            <div style="border-top:1px solid #EDE9FE;padding-top:18px;">
+                                <h3 class="font-semibold text-lg mb-1" style="color:var(--primary-purple);">What's Inside Each Kit</h3>
+                                <p class="text-sm" style="color:var(--text-light);">Carefully curated items designed to provide immediate comfort and emotional support</p>
                             </div>
                         </div>
                     </div>
@@ -892,835 +890,640 @@
             </div>
         </section>
 
-        <!-- Our Chapters Section -->
-        <section id="chapters" class="section-padding" style="background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);">
+        <!-- ── Chapters ── -->
+        <section id="chapters" class="section-padding bg-purple-gradient">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="section-title font-display text-orange">Our Chapters</h2>
-                    <p class="text-xl max-w-3xl mx-auto text-cream">
+                <div class="text-center mb-14 fade-in">
+                    <span class="section-label" style="color:var(--accent-orange-light);">Growing Network</span>
+                    <h2 class="section-title-light">Our Chapters</h2>
+                    <div class="divider-orange-center"></div>
+                    <p class="text-lg max-w-2xl mx-auto" style="color:rgba(255,255,255,0.78);">
                         We're growing our impact across communities. Explore our active chapters and see how we're bringing comfort to young survivors.
                     </p>
                 </div>
-                
+
                 <div class="chapters-carousel max-w-7xl mx-auto">
                     <button id="chapters-prev" class="chapters-arrow" type="button" aria-label="Previous chapters" onclick="chaptersScroll(-1)">
                         <i class="fas fa-chevron-left" aria-hidden="true"></i>
                     </button>
-
                     <div id="chapters-viewport" class="chapters-viewport" tabindex="0" aria-label="Chapters carousel">
                         <div id="chapters-track" class="chapters-track">
 
-                            <!-- Austin Chapter -->
-                                                <div class="chapter-card fade-in" onclick="window.location.href='austin.html'">
-                                                    <div class="chapter-card-content">
-                                                        <div class="chapter-icon">
-                                                            <i class="fas fa-star" aria-hidden="true"></i>
-                                                        </div>
-                                                        <h3 class="chapter-title font-display">Austin</h3>
-                                                        <p class="chapter-location">
-                                                            <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
-                                                            Texas, USA
-                                                        </p>
-                                                        <p class="chapter-description" style="color: var(--text-light); margin-bottom: 20px; font-size: 0.9rem;">Founding chapter at the Liberal Arts and Science Academy</p>
-                                                        <a href="austin.html" class="chapter-link" onclick="event.stopPropagation();">
-                                                            Learn More <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                            <!-- Austin -->
+                            <div class="chapter-card fade-in" onclick="window.location.href='austin.html'">
+                                <div class="chapter-card-content">
+                                    <div class="chapter-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
+                                    <h3 class="chapter-title">Austin</h3>
+                                    <p class="chapter-location"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>Texas, USA</p>
+                                    <p class="chapter-description text-sm mb-4" style="color:var(--text-light);">Founding chapter at the Liberal Arts and Science Academy</p>
+                                    <a href="austin.html" class="chapter-link" onclick="event.stopPropagation();">Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
 
-                            <!-- Seattle Chapter -->
-                                                <div class="chapter-card fade-in" onclick="window.location.href='seattle.html'">
-                                                    <div class="chapter-card-content">
-                                                        <div class="chapter-icon">
-                                                            <i class="fas fa-mountain" aria-hidden="true"></i>
-                                                        </div>
-                                                        <h3 class="chapter-title font-display">Seattle</h3>
-                                                        <p class="chapter-location">
-                                                            <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
-                                                            Washington, USA
-                                                        </p>
-                                                        <p class="chapter-description" style="color: var(--text-light); margin-bottom: 20px; font-size: 0.9rem;">Chapter at Henry M. Jackson High School</p>
-                                                        <a href="seattle.html" class="chapter-link" onclick="event.stopPropagation();">
-                                                            Learn More <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                            <!-- Seattle -->
+                            <div class="chapter-card fade-in" onclick="window.location.href='seattle.html'">
+                                <div class="chapter-card-content">
+                                    <div class="chapter-icon"><i class="fas fa-mountain" aria-hidden="true"></i></div>
+                                    <h3 class="chapter-title">Seattle</h3>
+                                    <p class="chapter-location"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>Washington, USA</p>
+                                    <p class="chapter-description text-sm mb-4" style="color:var(--text-light);">Chapter at Henry M. Jackson High School</p>
+                                    <a href="seattle.html" class="chapter-link" onclick="event.stopPropagation();">Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
 
-                            <!-- Taipei Chapter -->
-                                                <div class="chapter-card fade-in" onclick="window.location.href='taiwan.html'">
-                                                    <div class="chapter-card-content">
-                                                        <div class="chapter-icon">
-                                                            <i class="fas fa-globe-asia" aria-hidden="true"></i>
-                                                        </div>
-                                                        <h3 class="chapter-title font-display">Taipei</h3>
-                                                        <p class="chapter-location">
-                                                            <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
-                                                            Taiwan
-                                                        </p>
-                                                        <p class="chapter-description" style="color: var(--text-light); margin-bottom: 20px; font-size: 0.9rem;">Chapter at the Taipei American School</p>
-                                                        <a href="taiwan.html" class="chapter-link" onclick="event.stopPropagation();">
-                                                            Learn More <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                            <!-- Taipei -->
+                            <div class="chapter-card fade-in" onclick="window.location.href='taiwan.html'">
+                                <div class="chapter-card-content">
+                                    <div class="chapter-icon"><i class="fas fa-globe-asia" aria-hidden="true"></i></div>
+                                    <h3 class="chapter-title">Taipei</h3>
+                                    <p class="chapter-location"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>Taiwan</p>
+                                    <p class="chapter-description text-sm mb-4" style="color:var(--text-light);">Chapter at the Taipei American School</p>
+                                    <a href="taiwan.html" class="chapter-link" onclick="event.stopPropagation();">Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
 
-                            <!-- Vancouver Chapter -->
-                                                <div class="chapter-card fade-in" onclick="window.location.href='vancouver.html'">
-                                                    <div class="chapter-card-content">
-                                                        <div class="chapter-icon">
-                                                            <i class="fas fa-tree"></i>
-                                                        </div>
-                                                        <h3 class="chapter-title font-display">Vancouver</h3>
-                                                        <p class="chapter-location">
-                                                            <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
-                                                            British Columbia, Canada
-                                                        </p>
-                                                        <p class="chapter-description" style="color: var(--text-light); margin-bottom: 20px; font-size: 0.9rem;">Chapter at Crescent Heights Academy</p>
-                                                        <a href="vancouver.html" class="chapter-link" onclick="event.stopPropagation();">
-                                                            Learn More <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                            <!-- Vancouver -->
+                            <div class="chapter-card fade-in" onclick="window.location.href='vancouver.html'">
+                                <div class="chapter-card-content">
+                                    <div class="chapter-icon"><i class="fas fa-tree" aria-hidden="true"></i></div>
+                                    <h3 class="chapter-title">Vancouver</h3>
+                                    <p class="chapter-location"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>British Columbia, Canada</p>
+                                    <p class="chapter-description text-sm mb-4" style="color:var(--text-light);">Chapter at Crescent Heights Academy</p>
+                                    <a href="vancouver.html" class="chapter-link" onclick="event.stopPropagation();">Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
 
-                            <!-- Florida Chapter--> 
-                                                <div class="chapter-card fade-in" onclick="window.location.href='florida.html'">
-                                                    <div class="chapter-card-content">
-                                                        <div class="chapter-icon">
-                                                            <i class="fas fa-sun"></i>
-                                                        </div>
-                                                        <h3 class="chapter-title font-display">Coconut Creek</h3>
-                                                        <p class="chapter-location">
-                                                            <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
-                                                            Florida, USA
-                                                        </p>
-                                                        <p class="chapter-description" style="color: var(--text-light); margin-bottom: 20px; font-size: 0.9rem;">Chapter at North Broward Preparatory School</p>
-                                                        <a href="florida.html" class="chapter-link" onclick="event.stopPropagation();">
-                                                            Learn More <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                             <!-- Chicago Chapter--> 
-                                                <div class="chapter-card fade-in" onclick="window.location.href='chicago.html'">
-                                                    <div class="chapter-card-content">
-                                                        <div class="chapter-icon">
-                                                            <i class="fas fa-city"></i>
-                                                        </div>
-                                                        <h3 class="chapter-title font-display">Chicago</h3>
-                                                        <p class="chapter-location">
-                                                            <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
-                                                            Illinois, USA
-                                                        </p>
-                                                        <p class="chapter-description" style="color: var(--text-light); margin-bottom: 20px; font-size: 0.9rem;">Chapter at New Trier High School</p>
-                                                        <a href="chicago.html" class="chapter-link" onclick="event.stopPropagation();">
-                                                            Learn More <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                              <!-- Fremont Chapter--> 
-                                                <div class="chapter-card fade-in" onclick="window.location.href='cali.html'">
-                                                    <div class="chapter-card-content">
-                                                        <div class="chapter-icon">
-                                                            <i class="fas fa-umbrella-beach"></i>
-                                                        </div>
-                                                        <h3 class="chapter-title font-display">Fremont</h3>
-                                                        <p class="chapter-location">
-                                                            <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
-                                                            California, USA
-                                                        </p>
-                                                        <p class="chapter-description" style="color: var(--text-light); margin-bottom: 20px; font-size: 0.9rem;">Chapter at American High School</p>
-                                                        <a href="cali.html" class="chapter-link" onclick="event.stopPropagation();">
-                                                            Learn More <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                            <!-- Coconut Creek -->
+                            <div class="chapter-card fade-in" onclick="window.location.href='florida.html'">
+                                <div class="chapter-card-content">
+                                    <div class="chapter-icon"><i class="fas fa-sun" aria-hidden="true"></i></div>
+                                    <h3 class="chapter-title">Coconut Creek</h3>
+                                    <p class="chapter-location"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>Florida, USA</p>
+                                    <p class="chapter-description text-sm mb-4" style="color:var(--text-light);">Chapter at Monarch High School</p>
+                                    <a href="florida.html" class="chapter-link" onclick="event.stopPropagation();">Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- Chicago -->
+                            <div class="chapter-card fade-in" onclick="window.location.href='chicago.html'">
+                                <div class="chapter-card-content">
+                                    <div class="chapter-icon"><i class="fas fa-city" aria-hidden="true"></i></div>
+                                    <h3 class="chapter-title">Chicago</h3>
+                                    <p class="chapter-location"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>Illinois, USA</p>
+                                    <p class="chapter-description text-sm mb-4" style="color:var(--text-light);">Chapter at New Trier High School</p>
+                                    <a href="chicago.html" class="chapter-link" onclick="event.stopPropagation();">Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- Fremont -->
+                            <div class="chapter-card fade-in" onclick="window.location.href='cali.html'">
+                                <div class="chapter-card-content">
+                                    <div class="chapter-icon"><i class="fas fa-umbrella-beach" aria-hidden="true"></i></div>
+                                    <h3 class="chapter-title">Fremont</h3>
+                                    <p class="chapter-location"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>California, USA</p>
+                                    <p class="chapter-description text-sm mb-4" style="color:var(--text-light);">Chapter at American High School</p>
+                                    <a href="cali.html" class="chapter-link" onclick="event.stopPropagation();">Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- NYC -->
+                            <div class="chapter-card fade-in" onclick="window.location.href='nyc.html'">
+                                <div class="chapter-card-content">
+                                    <div class="chapter-icon"><i class="fas fa-subway" aria-hidden="true"></i></div>
+                                    <h3 class="chapter-title">New York City</h3>
+                                    <p class="chapter-location"><i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>New York, USA</p>
+                                    <p class="chapter-description text-sm mb-4" style="color:var(--text-light);">Chapter at Mamaroneck High School</p>
+                                    <a href="nyc.html" class="chapter-link" onclick="event.stopPropagation();">Learn More <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
-
                     <button id="chapters-next" class="chapters-arrow" type="button" aria-label="Next chapters" onclick="chaptersScroll(1)">
                         <i class="fas fa-chevron-right" aria-hidden="true"></i>
                     </button>
-                </div></div>
-                
+                </div>
+
                 <div class="text-center mt-12 fade-in">
-                    <p class="text-lg text-cream">
-                        <i class="fas fa-heart mr-2" style="color: var(--accent-orange);" aria-hidden="true"></i>
-                        Interested in starting a chapter in your community? <a href="mailto:thesafenestproject@gmail.com" style="color: var(--accent-orange); font-weight: 600; text-decoration: underline;">Get in touch!</a>
+                    <p style="color:rgba(255,255,255,0.75);">
+                        Interested in starting a chapter in your community?
+                        <a href="mailto:thesafenestproject@gmail.com" style="color:var(--accent-orange);font-weight:600;text-decoration:underline;margin-left:4px;">Get in touch</a>
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Partnership Section -->
+        <!-- ── Partnership Model ── -->
         <section id="partnership" class="section-padding bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="section-title font-display" style="color: var(--primary-purple);">Community Partnership Model</h2>
-                    <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
+                <div class="text-center mb-14 fade-in">
+                    <span class="section-label">How We Work</span>
+                    <h2 class="section-title">Community Partnership Model</h2>
+                    <div class="divider-orange-center"></div>
+                    <p class="text-lg max-w-3xl mx-auto" style="color:var(--text-mid);">
                         We work with local organizations to ensure direct distribution to children who need support most.
                     </p>
                 </div>
-                
-                <div class="grid md:grid-cols-4 gap-6 mb-12">
+
+                <div class="grid md:grid-cols-4 gap-6">
                     <div class="fade-in">
-                        <div class="card-white text-center p-6 rounded-2xl relative h-full">
-                            <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">1</div>
-                            <i class="fas fa-handshake text-4xl text-orange mb-4 mt-4" aria-hidden="true"></i>
-                            <h4 class="text-lg font-bold mb-3" style="color: var(--primary-purple);">Partner Identification</h4>
-                            <p class="text-sm" style="color: var(--text-dark);">Connect with local organizations serving affected families</p>
+                        <div class="card-plain text-center p-7 relative h-full">
+                            <div class="step-number absolute -top-4 left-6">1</div>
+                            <i class="fas fa-handshake text-3xl mt-4 mb-4" style="color:var(--primary-purple);" aria-hidden="true"></i>
+                            <h4 class="font-semibold mb-2" style="color:var(--primary-purple);">Partner Identification</h4>
+                            <p class="text-sm" style="color:var(--text-mid);">Connect with local organizations serving affected families</p>
                         </div>
                     </div>
-                    
                     <div class="fade-in">
-                        <div class="card-white text-center p-6 rounded-2xl relative h-full">
-                            <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">2</div>
-                            <i class="fas fa-clipboard-check text-4xl text-orange mb-4 mt-4" aria-hidden="true"></i>
-                            <h4 class="text-lg font-bold mb-3" style="color: var(--primary-purple);">Needs Assessment</h4>
-                            <p class="text-sm" style="color: var(--text-dark);">Understand specific needs and customize kit contents</p>
+                        <div class="card-plain text-center p-7 relative h-full">
+                            <div class="step-number absolute -top-4 left-6">2</div>
+                            <i class="fas fa-clipboard-check text-3xl mt-4 mb-4" style="color:var(--primary-purple);" aria-hidden="true"></i>
+                            <h4 class="font-semibold mb-2" style="color:var(--primary-purple);">Needs Assessment</h4>
+                            <p class="text-sm" style="color:var(--text-mid);">Understand specific needs and customize kit contents</p>
                         </div>
                     </div>
-                    
                     <div class="fade-in">
-                        <div class="card-white text-center p-6 rounded-2xl relative h-full">
-                            <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">3</div>
-                            <i class="fas fa-shipping-fast text-4xl text-orange mb-4 mt-4" aria-hidden="true"></i>
-                            <h4 class="text-lg font-bold mb-3" style="color: var(--primary-purple);">Direct Distribution</h4>
-                            <p class="text-sm" style="color: var(--text-dark);">Deliver kits at the moment of greatest need</p>
+                        <div class="card-plain text-center p-7 relative h-full">
+                            <div class="step-number absolute -top-4 left-6">3</div>
+                            <i class="fas fa-shipping-fast text-3xl mt-4 mb-4" style="color:var(--primary-purple);" aria-hidden="true"></i>
+                            <h4 class="font-semibold mb-2" style="color:var(--primary-purple);">Direct Distribution</h4>
+                            <p class="text-sm" style="color:var(--text-mid);">Deliver kits at the moment of greatest need</p>
                         </div>
                     </div>
-                    
                     <div class="fade-in">
-                        <div class="card-white text-center p-6 rounded-2xl relative h-full">
-                            <div class="absolute -top-4 left-6 w-8 h-8 bg-orange text-purple-800 rounded-full flex items-center justify-center font-bold">4</div>
-                            <i class="fas fa-chart-line text-4xl text-orange mb-4 mt-4" aria-hidden="true"></i>
-                            <h4 class="text-lg font-bold mb-3" style="color: var(--primary-purple);">Impact Tracking</h4>
-                            <p class="text-sm" style="color: var(--text-dark);">Measure impact and continuously improve</p>
+                        <div class="card-plain text-center p-7 relative h-full">
+                            <div class="step-number absolute -top-4 left-6">4</div>
+                            <i class="fas fa-chart-line text-3xl mt-4 mb-4" style="color:var(--primary-purple);" aria-hidden="true"></i>
+                            <h4 class="font-semibold mb-2" style="color:var(--primary-purple);">Impact Tracking</h4>
+                            <p class="text-sm" style="color:var(--text-mid);">Measure impact and continuously improve</p>
                         </div>
                     </div>
                 </div>
-                
-            
             </div>
         </section>
 
-        <!-- Our Partners Section -->
-        <section id="partners" class="section-padding" style="background: linear-gradient(135deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);">
+        <!-- ── Sponsors ── -->
+        <section id="sponsors" class="section-padding bg-light-purple">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="section-title font-display text-orange">Our Partners</h2>
-                    <p class="text-xl max-w-4xl mx-auto text-cream">
-                        We're proud to work with dedicated organizations that share our commitment to supporting children and families affected by domestic violence.
+                <div class="text-center mb-14 fade-in">
+                    <span class="section-label">Thank You</span>
+                    <h2 class="section-title">Our Sponsors</h2>
+                    <div class="divider-orange-center"></div>
+                    <p class="text-lg max-w-3xl mx-auto" style="color:var(--text-mid);">
+                        We're grateful to the generous businesses and organizations whose support through fundraising and in-kind donations makes our work possible.
                     </p>
                 </div>
-                
-                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- AFFSA -->
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-5xl mx-auto">
+                    <!-- Panda Express -->
                     <div class="fade-in">
-                        <div class="affsacard text-center p-8">
-                            <div class="mb-6">
-                                <img src="afssa-logo.png" alt="Asian Family Support Services of Austin (AFSSA) Logo" class="max-w-full h-32 mx-auto object-contain">
-                            </div>
-                            <h3 class="text-2xl font-bold text-orange mb-4">Asian Family Support Services of Austin</h3>
-                           
+                        <div class="partner-card">
+                            <img src="pandaexpress.png" alt="Panda Express Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Panda Express</h3>
                         </div>
                     </div>
-                    <!-- HCWC -->
+                    <!-- Panera Bread -->
                     <div class="fade-in">
-                        <div class="affsacard text-center p-8">
-                            <div class="mb-6">
-                                <img src="HCWC LOGO.png" alt="HCWC Logo" class="max-w-full h-32 mx-auto object-contain">
-                            </div>
-                            <h3 class="text-2xl font-bold text-orange mb-4">Hays-Caldwell Women's Center</h3>
-                           
+                        <div class="partner-card">
+                            <img src="panera_logo.jpg" alt="Panera Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Panera Bread</h3>
                         </div>
                     </div>
-                    <!-- k4c -->
+                    <!-- Chipotle -->
+                   <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="chipotle.png" alt="Panera Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Chipotle</h3>
+                        </div>
+                    </div>
+                    <!-- Walmart -->
                     <div class="fade-in">
-                        <div class="affsacard text-center p-8">
-                            <div class="mb-6">
-                                <img src="k4c.png" alt="k4c Logo" class="max-w-full h-32 mx-auto object-contain">
-                            </div>
-                            <h3 class="text-2xl font-bold text-orange mb-4">Karma for Cara Foundation</h3>
-                           
+                        <div class="partner-card">
+                            <img src="walmart.png" alt="Panera Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Walmart</h3>
+                        </div>
+                    </div>
+                    <!-- Real Canadian Superstore -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="rcs.png" alt="Panera Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Real Canadian Superstore</h3>
+                        </div>
+                    </div>
+                    <!-- London Drugs -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="londondrugs.png" alt="Panera Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">London Drugs</h3>
+                        </div>
+                    </div>
+                    <!-- Boston Pizza -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="bostonpizza.png" alt="Panera Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Boston Pizza</h3>
+                        </div>
+                    </div>
+                    <!-- Michaels -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="michaels.png" alt="Panera Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Michaels</h3>
                         </div>
                     </div>
                 </div>
-                
-                
+
                 <div class="text-center mt-12 fade-in">
-                    <p class="text-cream text-lg mb-6">Interested in partnering with us? Shoot us an email!</p>
-                    <a href="mailto: thesafenestproject@gmail.com" class="btn-primary">
-                        <i class="fas fa-handshake mr-2" aria-hidden="true"></i>
-                        Become a Partner
+                    <p class="mb-5" style="color:var(--text-mid);">Interested in sponsoring our mission?</p>
+                    <a href="mailto:thesafenestproject@gmail.com" class="btn-primary">
+                        <i class="fas fa-envelope mr-2" aria-hidden="true"></i>Become a Sponsor
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Impact Section -->
+        <!-- ── Partners ── -->
+        <section id="partners" class="section-padding bg-purple-gradient">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-14 fade-in">
+                    <span class="section-label" style="color:var(--accent-orange-light);">Our Network</span>
+                    <h2 class="section-title-light">Our Partners</h2>
+                    <div class="divider-orange-center"></div>
+                    <p class="text-lg max-w-3xl mx-auto" style="color:rgba(255,255,255,0.78);">
+                        We're proud to work with dedicated organizations that share our commitment to supporting children and families affected by domestic violence.
+                    </p>
+                </div>
+
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- AFSSA -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="afssa-logo.png" alt="Asian Family Support Services of Austin (AFSSA) Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Asian Family Support Services of Austin</h3>
+                        </div>
+                    </div>
+                    <!-- HCWC -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="HCWC LOGO.png" alt="HCWC Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Hays-Caldwell Women's Center</h3>
+                        </div>
+                    </div>
+                    <!-- K4C -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="k4c.png" alt="Karma for Cara Foundation Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Karma for Cara Foundation</h3>
+                        </div>
+                    </div>
+                    <!-- Narika -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="narika.png" alt="Narika Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">Narika</h3>
+                        </div>
+                    </div>
+                    <!-- NSCS -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="nscs.png" alt="NSCS Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">North Shore Crisis Services Society</h3>
+                        </div>
+                    </div>
+                    <!-- WARM -->
+                    <div class="fade-in">
+                        <div class="partner-card">
+                            <img src="warmlogo.png" alt="We All Really Matter Logo" class="h-24 mx-auto object-contain mb-4">
+                            <h3 class="font-semibold text-base" style="color:var(--primary-purple);">We All Really Matter (WARM)</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 fade-in">
+                    <p class="mb-5" style="color:rgba(255,255,255,0.75);">Interested in partnering with us? Shoot us an email!</p>
+                    <a href="mailto:thesafenestproject@gmail.com" class="btn-primary">
+                        <i class="fas fa-handshake mr-2" aria-hidden="true"></i>Become a Partner
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Impact ── -->
         <section id="impact" class="section-padding bg-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="section-title font-display" style="color: var(--primary-purple);">Creating Moments of Safety</h2>
-                    <p class="text-xl max-w-4xl mx-auto" style="color: var(--warm-brown);">
+                <div class="text-center mb-14 fade-in">
+                    <span class="section-label">Our Impact</span>
+                    <h2 class="section-title">Creating Moments of Safety</h2>
+                    <div class="divider-orange-center"></div>
+                    <p class="text-lg max-w-3xl mx-auto" style="color:var(--text-mid);">
                         Our comfort kits create small but meaningful moments of safety and healing that can have lasting positive impacts on a child's recovery journey.
                     </p>
                 </div>
-                <div class="md:flex md:space-x-8">
-    <!-- Text Boxes -->
-    <div class="space-y-6 md:flex-1">
-        <div class="card">
-            <div class="flex items-center mb-3">
-                <i class="fas fa-clock text-2xl text-brown mr-4"></i>
-                <h4 class="text-lg font-bold text-orange">Immediate Comfort</h4>
-            </div>
-            <p>Providing instant emotional support during the most vulnerable moments.</p>
-        </div>
-        
-        <div class="card">
-            <div class="flex items-center mb-3">
-                <i class="fas fa-hand-holding-heart text-2xl text-brown mr-4"></i>
-                <h4 class="text-lg font-bold text-orange">Tangible Care</h4>
-            </div>
-            <p>Physical reminders that children are valued and supported.</p>
-        </div>
-        
-        <div class="card">
-            <div class="flex items-center mb-3">
-                <i class="fas fa-hands-helping text-2xl text-brown mr-4"></i>
-                <h4 class="text-lg font-bold text-orange">Heartfelt Support</h4>
-            </div>
-            <p>Emphasizing the personalized and intentional nature of each kit.</p>
-        </div>
-    </div>
-    
-    <!-- Image -->
-<div class="fade-in md:flex-1 mt-8 md:mt-0">
-    <div class="card text-center">
-        <img src="children-hope.jpg" alt="Children's hands holding symbols of hope and healing - paper hearts, colorful drawings, and small flowers" class="w-full h-auto md:h-full object-cover rounded-lg mb-4">
-        <i class="fas fa-shield-heart text-6xl text-orange mt-4" aria-hidden="true"></i>
-    </div>
-</div>
-</div>
-            </div>
+
+                <div class="md:flex md:gap-10 items-start">
+                    <div class="space-y-5 md:flex-1 fade-in">
+                        <div class="card-accent-left">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-clock text-xl mt-1" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1" style="color:var(--primary-purple);">Immediate Comfort</h4>
+                                    <p style="color:var(--text-mid);">Providing instant emotional support during the most vulnerable moments.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-accent-left">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-hand-holding-heart text-xl mt-1" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1" style="color:var(--primary-purple);">Tangible Care</h4>
+                                    <p style="color:var(--text-mid);">Physical reminders that children are valued and supported.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-accent-left">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-hands-helping text-xl mt-1" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1" style="color:var(--primary-purple);">Heartfelt Support</h4>
+                                    <p style="color:var(--text-mid);">Emphasizing the personalized and intentional nature of each kit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in md:flex-1 mt-8 md:mt-0">
+                        <div class="card-white-shadow overflow-hidden">
+                            <img src="children-hope.jpg" alt="Children's hands holding symbols of hope and healing" class="w-full rounded-xl mb-4">
+                            <div class="text-center py-2">
+                                <i class="fas fa-shield-heart text-4xl" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Get Involved Section -->
-        <section id="get-involved" class="section-padding gradient-bg text-white">
+        <!-- ── Get Involved ── -->
+        <section id="get-involved" class="section-padding bg-purple-gradient text-white">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="section-title font-display text-orange">Join Our Mission</h2>
-                    <p class="text-xl max-w-4xl mx-auto text-cream">
-                        Together, we can ensure that every child affected by domestic violence receives the comfort, care, and hope they deserve during their most difficult moments.
+                <div class="text-center mb-14 fade-in">
+                    <span class="section-label" style="color:var(--accent-orange-light);">Take Action</span>
+                    <h2 class="section-title-light">Join Our Mission</h2>
+                    <div class="divider-orange-center"></div>
+                    <p class="text-lg max-w-3xl mx-auto" style="color:rgba(255,255,255,0.78);">
+                        Together, we can ensure that every child affected by domestic violence receives the comfort, care, and hope they deserve.
                     </p>
                 </div>
-                
-                <div class="grid md:grid-cols-3 gap-8 mb-12">
+
+                <div class="grid md:grid-cols-3 gap-6 mb-10">
                     <div class="fade-in">
-                        <div class="card text-center p-8 rounded-2xl h-full">
-                            <i class="fas fa-heart text-5xl text-orange mb-6" aria-hidden="true"></i>
-                            <h3 class="text-2xl font-bold mb-4 font-display text-orange">Donate Today</h3>
-                            <p class="mb-6 text-cream">Help us create more comfort kits for children in crisis</p>
-                            <div class="text-lg font-bold text-orange mb-6">$12 funds one complete comfort kit</div>
-                            <a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors?attribution_id=sl:4e75d642-8a84-4353-98a7-00ca1d565c0c" class="btn-primary">
-                                <i class="fas fa-donate mr-2" aria-hidden="true"></i>
-                                Donate Now
-                        </a>
-                            </button>
+                        <div class="card-purple text-center p-8 h-full flex flex-col">
+                            <i class="fas fa-heart text-4xl mb-5" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h3 class="font-display text-2xl mb-3">Donate Today</h3>
+                            <p class="mb-4" style="color:rgba(255,255,255,0.75);">Help us create more comfort kits for children in crisis</p>
+                            <p class="font-semibold mb-6" style="color:var(--accent-orange);">$12 funds one complete comfort kit</p>
+                            <div class="mt-auto">
+                                <a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors?attribution_id=sl:4e75d642-8a84-4353-98a7-00ca1d565c0c" class="btn-primary">
+                                    <i class="fas fa-donate mr-2" aria-hidden="true"></i>Donate Now
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
                     <div class="fade-in">
-                        <div class="card text-center p-8 rounded-2xl h-full">
-                            <i class="fas fa-users text-5xl text-orange mb-6" aria-hidden="true"></i>
-                            <h3 class="text-2xl font-bold mb-4 font-display text-orange">Become a Partner</h3>
-                            <p class="mb-6 text-cream">Join our distribution network to reach more children</p>
-                            <div class="text-lg font-bold text-orange mb-6">Connect with families in your community</div>
-                            <a href="mailto: thesafenestproject@gmail.com" class="btn-primary">
-                                <i class="fas fa-handshake mr-2" aria-hidden="true"></i>
-                                Partner With Us
-                            </a>
+                        <div class="card-purple text-center p-8 h-full flex flex-col">
+                            <i class="fas fa-users text-4xl mb-5" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h3 class="font-display text-2xl mb-3">Become a Partner</h3>
+                            <p class="mb-4" style="color:rgba(255,255,255,0.75);">Join our distribution network to reach more children</p>
+                            <p class="font-semibold mb-6" style="color:var(--accent-orange);">Connect with families in your community</p>
+                            <div class="mt-auto">
+                                <a href="mailto:thesafenestproject@gmail.com" class="btn-primary">
+                                    <i class="fas fa-handshake mr-2" aria-hidden="true"></i>Partner With Us
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    
                     <div class="fade-in">
-                        <div class="card text-center p-8 rounded-2xl h-full">
-                            <i class="fas fa-share-alt text-5xl text-orange mb-6" aria-hidden="true"></i>
-                            <h3 class="text-2xl font-bold mb-4 font-display text-orange">Start A Chapter</h3>
-                            <p class="mb-6 text-cream">Help us reach more children in need</p>
-                            <div class="text-lg font-bold text-orange mb-6">Bring the Safe Nest Project to your community</div>
-                            <a href="mailto: thesafenestproject@gmail.com" class="btn-primary">
-                                <i class="fas fa-globe mr-2" aria-hidden="true"></i>
-                                Start A Chapter
-                            </a>
+                        <div class="card-purple text-center p-8 h-full flex flex-col">
+                            <i class="fas fa-globe text-4xl mb-5" style="color:var(--accent-orange);" aria-hidden="true"></i>
+                            <h3 class="font-display text-2xl mb-3">Start A Chapter</h3>
+                            <p class="mb-4" style="color:rgba(255,255,255,0.75);">Bring the Safe Nest Project to your community</p>
+                            <p class="font-semibold mb-6" style="color:var(--accent-orange);">Help us reach more children in need</p>
+                            <div class="mt-auto">
+                                <a href="mailto:thesafenestproject@gmail.com" class="btn-primary">
+                                    <i class="fas fa-plus mr-2" aria-hidden="true"></i>Start A Chapter
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="fade-in">
-                    <div class="card text-center p-8 rounded-2xl">
-                        <h3 class="text-2xl font-bold mb-4 font-display text-orange">Ready to Make a Difference?</h3>
-                        <p class="text-lg mb-6 text-cream">
-                            Contact The Safe Nest Project today to learn how you can help create moments of safety and healing for children in need. Email us at thesafenestproject@gmail.com.
+                    <div class="card-purple text-center p-8 max-w-2xl mx-auto">
+                        <h3 class="font-display text-2xl mb-3">Ready to Make a Difference?</h3>
+                        <p class="mb-6" style="color:rgba(255,255,255,0.78);">
+                            Contact The Safe Nest Project today to learn how you can help create moments of safety and healing for children in need.
                         </p>
-                        <div class="space-x-4">
-                            <a href="mailto:thesafenestproject@gmail.com" class="btn-secondary">
-                                <i class="fas fa-envelope mr-2" aria-hidden="true"></i>
-                                Get In Touch
-                            </a>
-                        </div>
+                        <a href="mailto:thesafenestproject@gmail.com" class="btn-secondary">
+                            <i class="fas fa-envelope mr-2" aria-hidden="true"></i>Get In Touch
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        
-
-    <!-- Footer -->
-    <footer class="gradient-bg text-white py-12" role="contentinfo">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-4 mb-4">
-                        <div class="logo-container">
+        <!-- ── Footer ── -->
+        <footer class="bg-purple-gradient text-white py-14" role="contentinfo">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-4 gap-8 mb-10">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
                             <img src="v3v3 (2).jpg" alt="Safe Nest Project Logo" class="logo-img">
+                            <span class="font-semibold">The Safe Nest Project</span>
                         </div>
-                        <span class="font-bold text-lg">The Safe Nest Project</span>
+                        <p class="text-sm mb-5" style="color:rgba(255,255,255,0.68);">Creating comfort for young survivors of domestic violence through trauma-informed care.</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/company/the-safe-nest-project/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a href="mailto:thesafenestproject@gmail.com" aria-label="Email">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <p class="text-cream mb-4">Creating comfort for young survivors of domestic violence through trauma-informed care.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/the-safe-nest-project/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin" aria-hidden="true"></i>
-                        </a>
-                        <a href="mailto:thesafenestproject@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
-                        </a>
+                    <div>
+                        <h4 class="font-semibold mb-4" style="color:var(--accent-orange);">Quick Links</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#about" style="color:rgba(255,255,255,0.7);" class="hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="#approach" style="color:rgba(255,255,255,0.7);" class="hover:text-white transition-colors">Our Approach</a></li>
+                            <li><a href="#partnership" style="color:rgba(255,255,255,0.7);" class="hover:text-white transition-colors">Partnership</a></li>
+                            <li><a href="#impact" style="color:rgba(255,255,255,0.7);" class="hover:text-white transition-colors">Impact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4" style="color:var(--accent-orange);">Get Involved</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="https://www.gofundme.com/f/the-safe-nest-project-creating-comfort-for-young-survivors?attribution_id=sl:4e75d642-8a84-4353-98a7-00ca1d565c0c" style="color:rgba(255,255,255,0.7);" class="hover:text-white transition-colors">Donate</a></li>
+                            <li><a href="mailto:thesafenestproject@gmail.com" style="color:rgba(255,255,255,0.7);" class="hover:text-white transition-colors">Volunteer</a></li>
+                            <li><a href="mailto:thesafenestproject@gmail.com" style="color:rgba(255,255,255,0.7);" class="hover:text-white transition-colors">Partner</a></li>
+                            <li><button onclick="shareWebsite()" style="color:rgba(255,255,255,0.7);background:none;border:none;cursor:pointer;padding:0;font-size:inherit;" class="hover:text-white transition-colors text-left">Spread the Word</button></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4" style="color:var(--accent-orange);">Contact</h4>
+                        <p class="text-sm" style="color:rgba(255,255,255,0.7);">
+                            <i class="fas fa-envelope mr-2" aria-hidden="true"></i>thesafenestproject@gmail.com
+                        </p>
                     </div>
                 </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold text-orange mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="text-cream hover:text-orange transition-colors">About Us</a></li>
-                        <li><a href="#approach" class="text-cream hover:text-orange transition-colors">Our Approach</a></li>
-                        <li><a href="#partnership" class="text-cream hover:text-orange transition-colors">Partnership</a></li>
-                        <li><a href="#impact" class="text-cream hover:text-orange transition-colors">Impact</a></li>
-                        <li><a href="#privacy" class="text-cream hover:text-orange transition-colors">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold text-orange mb-4">Get Involved</h4>
-                    <ul class="space-y-2">
-                        <li><button onclick="openDonationModal()" class="text-cream hover:text-orange transition-colors text-left">Donate</button></li>
-                        <li><a href="mailto:thesafenestproject@gmail.com" class="text-cream hover:text-orange transition-colors">Volunteer</a></li>
-                        <li><a href="mailto:thesafenestproject@gmail.com" class="text-cream hover:text-orange transition-colors">Partner</a></li>
-                        <li><button onclick="shareWebsite()" class="text-cream hover:text-orange transition-colors text-left">Spread the Word</button></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold text-orange mb-4">Contact</h4>
-                    <div class="space-y-2 text-cream">
-                        <p><i class="fas fa-envelope mr-2" aria-hidden="true"></i> thesafenestproject@gmail.com</p>
-                        
-                       
-                    </div>
+                <div style="border-top:1px solid rgba(255,255,255,0.12);padding-top:24px;text-align:center;">
+                    <p class="text-sm" style="color:rgba(255,255,255,0.55);">&copy; 2025 The Safe Nest Project. All rights reserved. A youth-led nonprofit initiative.</p>
                 </div>
             </div>
-            
-            <div class="border-t border-purple-400 mt-8 pt-8 text-center">
-                <p class="text-cream">&copy; 2025 The Safe Nest Project. All rights reserved. | A youth-led nonprofit initiative.</p>
-                <p class="text-sm text-cream mt-2">
-                    <a href="#privacy" class="hover:text-orange transition-colors">Privacy Policy</a> | 
-                    <a href="#terms" class="hover:text-orange transition-colors">Terms of Service</a> | 
-                    <a href="#accessibility" class="hover:text-orange transition-colors">Accessibility</a>
-                </p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
-    
+    </main>
 
-    <!-- Success Message Modal -->
+    <!-- Success Modal -->
     <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-8 text-center">
             <i class="fas fa-check-circle text-5xl text-green-500 mb-4" aria-hidden="true"></i>
-            <h3 class="text-2xl font-bold mb-4 font-display" style="color: var(--primary-purple);">Thank You!</h3>
-            <p class="text-gray-600 mb-6" id="success-message">Your message has been sent successfully. We'll get back to you soon!</p>
-            <button onclick="closeSuccessModal()" class="btn-primary">
-                <i class="fas fa-check mr-2" aria-hidden="true"></i>
-                Close
-            </button>
+            <h3 class="font-display text-2xl mb-4" style="color:var(--primary-purple);">Thank You!</h3>
+            <p class="mb-6" style="color:var(--text-mid);" id="success-message">Your message has been sent successfully.</p>
+            <button onclick="closeSuccessModal()" class="btn-primary">Close</button>
         </div>
     </div>
 
     <script>
-        // Global variables
-        let selectedDonationAmount = 25;
-
-        // Smooth scrolling for navigation links
+        // ── Smooth scroll ──
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    const navH = document.querySelector('.navbar').offsetHeight;
+                    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - navH, behavior: 'smooth' });
                 }
             });
         });
 
-        // Logo click behavior - scroll to top on homepage
+        // ── Logo click ──
         const logoLink = document.getElementById('logo-link');
-        if (logoLink && window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-            logoLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+        if (logoLink && (window.location.pathname.includes('index.html') || window.location.pathname === '/')) {
+            logoLink.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
         }
-        
-        // Mobile menu toggle
+
+        // ── Mobile menu ──
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
         mobileMenuBtn.addEventListener('click', () => {
-            const isExpanded = mobileMenu.classList.contains('hidden');
+            const isHidden = mobileMenu.classList.contains('hidden');
             mobileMenu.classList.toggle('hidden');
-            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenuBtn.setAttribute('aria-expanded', isHidden);
         });
-        
-        // Desktop dropdown hover with improved behavior
+
+        // ── Desktop dropdown ──
         const dropdown = document.querySelector('.dropdown');
         const dropdownContent = dropdown.querySelector('.dropdown-content');
         let dropdownTimeout;
-        
-        // Show dropdown on hover
-        dropdown.addEventListener('mouseenter', () => {
-            clearTimeout(dropdownTimeout);
-            dropdownContent.style.display = 'block';
-        });
-        
-        // Hide dropdown with delay
-        dropdown.addEventListener('mouseleave', () => {
-            dropdownTimeout = setTimeout(() => {
-                dropdownContent.style.display = 'none';
-            }, 200); // 200ms delay before hiding
-        });
-        
-        // Keep dropdown open when hovering over it
-        dropdownContent.addEventListener('mouseenter', () => {
-            clearTimeout(dropdownTimeout);
-        });
-        
-        dropdownContent.addEventListener('mouseleave', () => {
-            dropdownTimeout = setTimeout(() => {
-                dropdownContent.style.display = 'none';
-            }, 200);
-        });
-        
-        // Dropdown link hover effects
-        const dropdownLinks = dropdownContent.querySelectorAll('a');
-        dropdownLinks.forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(138, 43, 226, 0.1)';
-                this.style.color = 'var(--accent-orange)';
-            });
-            link.addEventListener('mouseleave', function() {
-                this.style.background = 'white';
-                this.style.color = 'var(--primary-purple)';
-            });
-        });
-        
-        // Mobile chapters dropdown toggle
+        dropdown.addEventListener('mouseenter', () => { clearTimeout(dropdownTimeout); dropdownContent.style.display = 'block'; });
+        dropdown.addEventListener('mouseleave', () => { dropdownTimeout = setTimeout(() => { dropdownContent.style.display = 'none'; }, 180); });
+        dropdownContent.addEventListener('mouseenter', () => clearTimeout(dropdownTimeout));
+        dropdownContent.addEventListener('mouseleave', () => { dropdownTimeout = setTimeout(() => { dropdownContent.style.display = 'none'; }, 180); });
+
+        // ── Mobile chapters toggle ──
         const mobileChaptersToggle = document.getElementById('mobile-chapters-toggle');
         const mobileChaptersDropdown = document.getElementById('mobile-chapters-dropdown');
         const mobileChaptersIcon = document.getElementById('mobile-chapters-icon');
-        
         if (mobileChaptersToggle) {
-            mobileChaptersToggle.addEventListener('click', (e) => {
+            mobileChaptersToggle.addEventListener('click', e => {
                 e.preventDefault();
                 mobileChaptersDropdown.classList.toggle('hidden');
-                if (mobileChaptersDropdown.classList.contains('hidden')) {
-                    mobileChaptersIcon.style.transform = 'rotate(0deg)';
-                } else {
-                    mobileChaptersIcon.style.transform = 'rotate(180deg)';
-                }
+                mobileChaptersIcon.style.transform = mobileChaptersDropdown.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
             });
         }
-        
 
-
-        // Navbar scroll effect
+        // ── Navbar scroll ──
         window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 80);
         });
 
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // ── Fade-in on scroll ──
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Newsletter form submission
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+        // ── Safety exit ──
+        document.getElementById('safety-exit').addEventListener('click', function(e) {
             e.preventDefault();
-            
-            const firstName = document.getElementById('first-name').value;
-            const lastName = document.getElementById('last-name').value;
-            const email = document.getElementById('email').value;
-            
-            // Simulate form submission
-            console.log('Newsletter signup:', { firstName, lastName, email });
-            
-            // Show success message
-            showSuccessMessage('Thank you for joining our community! You\'ll receive updates on our impact and ways to help children in need.');
-            
-            // Reset form
-            this.reset();
+            if (window.history.replaceState) window.history.replaceState(null, null, 'https://www.google.com');
+            window.location.replace('https://www.google.com');
         });
 
-        // Contact form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simulate form submission
-            console.log('Contact form submission:', data);
-            
-            // Show success message
-            showSuccessMessage('Thank you for your message! We\'ll get back to you within 24 hours.');
-            
-            // Reset form
-            this.reset();
-        });
-
-        // Donation modal functions
-        function openDonationModal() {
-            document.getElementById('donation-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDonationModal() {
-            document.getElementById('donation-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        function selectDonationAmount(amount) {
-            selectedDonationAmount = amount;
-            document.getElementById('custom-amount').value = amount;
-            
-            // Update button styles
-            document.querySelectorAll('.donation-amount-btn').forEach(btn => {
-                btn.classList.remove('border-orange-500', 'bg-orange-50');
-                btn.classList.add('border-gray-200');
-            });
-            
-            event.target.closest('.donation-amount-btn').classList.add('border-orange-500', 'bg-orange-50');
-        }
-
-        function processDonation() {
-            const customAmount = document.getElementById('custom-amount').value;
-            const amount = customAmount || selectedDonationAmount;
-            
-            // Simulate donation processing
-            console.log('Processing donation:', { amount });
-            
-            // Close donation modal
-            closeDonationModal();
-            
-            // Show success message
-            showSuccessMessage(`Thank you for your generous donation of $${amount}! Your support helps us create comfort kits for children in need.`);
-        }
-
-        // Success modal functions
-        function showSuccessMessage(message) {
-            document.getElementById('success-message').textContent = message;
+        // ── Success modal ──
+        function showSuccessMessage(msg) {
+            document.getElementById('success-message').textContent = msg;
             document.getElementById('success-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
-
         function closeSuccessModal() {
             document.getElementById('success-modal').classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSuccessModal(); });
 
-        // Share website function
+        // ── Share ──
         function shareWebsite() {
             if (navigator.share) {
-                navigator.share({
-                    title: 'The Safe Nest Project',
-                    text: 'Creating comfort for young survivors of domestic violence',
-                    url: window.location.href
-                });
+                navigator.share({ title: 'The Safe Nest Project', text: 'Creating comfort for young survivors of domestic violence', url: window.location.href });
             } else {
-                // Fallback for browsers that don't support Web Share API
-                const url = window.location.href;
-                navigator.clipboard.writeText(url).then(() => {
-                    showSuccessMessage('Website URL copied to clipboard! Share it with your network to help us reach more supporters.');
-                });
+                navigator.clipboard.writeText(window.location.href).then(() => showSuccessMessage('URL copied to clipboard!'));
             }
         }
 
-        // Safety exit function
-        document.getElementById('safety-exit').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Clear browser history
-            if (window.history.replaceState) {
-                window.history.replaceState(null, null, 'https://www.google.com');
-            }
-            
-            // Redirect to Google
-            window.location.replace('https://www.google.com');
-        });
-
-        // Keyboard navigation improvements
-        document.addEventListener('keydown', function(e) {
-            // ESC key closes modals
-            if (e.key === 'Escape') {
-                closeDonationModal();
-                closeSuccessModal();
-            }
-        });
-        // Chapters carousel global helper (fallback for onclick)
+        // ── Chapters carousel ──
         function chaptersScroll(direction) {
             const viewport = document.getElementById('chapters-viewport');
             const track = document.getElementById('chapters-track');
             if (!viewport || !track) return;
-
             const firstCard = track.querySelector('.chapter-card');
-            const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 320;
-            const gapStr = getComputedStyle(track).gap || '0px';
-            const gap = parseFloat(gapStr) || 0;
+            const cardWidth = firstCard ? firstCard.getBoundingClientRect().width : 290;
+            const gap = parseFloat(getComputedStyle(track).gap) || 0;
             const step = cardWidth + gap;
-
             if (direction < 0) {
-                const nearStart = viewport.scrollLeft <= 2;
-                if (nearStart) {
-                    viewport.scrollTo({ left: viewport.scrollWidth - viewport.clientWidth, behavior: 'smooth' });
-                } else {
-                    viewport.scrollBy({ left: -step, behavior: 'smooth' });
-                }
+                viewport.scrollLeft <= 2 ? viewport.scrollTo({ left: viewport.scrollWidth - viewport.clientWidth, behavior: 'smooth' }) : viewport.scrollBy({ left: -step, behavior: 'smooth' });
             } else {
-                const nearEnd = (viewport.scrollLeft + viewport.clientWidth) >= (viewport.scrollWidth - 2);
-                if (nearEnd) {
-                    viewport.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    viewport.scrollBy({ left: step, behavior: 'smooth' });
-                }
+                (viewport.scrollLeft + viewport.clientWidth) >= (viewport.scrollWidth - 2) ? viewport.scrollTo({ left: 0, behavior: 'smooth' }) : viewport.scrollBy({ left: step, behavior: 'smooth' });
             }
         }
 
-
-
-        
-        // Chapters carousel controls
         function initChaptersCarousel() {
             const viewport = document.getElementById('chapters-viewport');
             const track = document.getElementById('chapters-track');
             const prevBtn = document.getElementById('chapters-prev');
             const nextBtn = document.getElementById('chapters-next');
-
             if (!viewport || !track || !prevBtn || !nextBtn) return;
-
             const getStep = () => {
                 const firstCard = track.querySelector('.chapter-card');
-                if (!firstCard) return 320;
-                const cardWidth = firstCard.getBoundingClientRect().width;
-                const gapStr = getComputedStyle(track).gap || '0px';
-                const gap = parseFloat(gapStr) || 0;
-                return cardWidth + gap;
+                if (!firstCard) return 290;
+                return firstCard.getBoundingClientRect().width + (parseFloat(getComputedStyle(track).gap) || 0);
             };
-
-            const scrollToStart = () => viewport.scrollTo({ left: 0, behavior: 'smooth' });
-            const scrollToEnd = () => viewport.scrollTo({ left: viewport.scrollWidth - viewport.clientWidth, behavior: 'smooth' });
-
             prevBtn.addEventListener('click', () => {
-                const step = getStep();
-                const nearStart = viewport.scrollLeft <= 2;
-                if (nearStart) {
-                    scrollToEnd();
-                } else {
-                    viewport.scrollBy({ left: -step, behavior: 'smooth' });
-                }
+                viewport.scrollLeft <= 2 ? viewport.scrollTo({ left: viewport.scrollWidth - viewport.clientWidth, behavior: 'smooth' }) : viewport.scrollBy({ left: -getStep(), behavior: 'smooth' });
             });
-
             nextBtn.addEventListener('click', () => {
-                const step = getStep();
-                const nearEnd = (viewport.scrollLeft + viewport.clientWidth) >= (viewport.scrollWidth - 2);
-                if (nearEnd) {
-                    scrollToStart();
-                } else {
-                    viewport.scrollBy({ left: step, behavior: 'smooth' });
-                }
+                (viewport.scrollLeft + viewport.clientWidth) >= (viewport.scrollWidth - 2) ? viewport.scrollTo({ left: 0, behavior: 'smooth' }) : viewport.scrollBy({ left: getStep(), behavior: 'smooth' });
             });
-
-            // Keyboard support when viewport is focused
-            viewport.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    prevBtn.click();
-                } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    nextBtn.click();
-                }
+            viewport.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') { e.preventDefault(); prevBtn.click(); }
+                else if (e.key === 'ArrowRight') { e.preventDefault(); nextBtn.click(); }
             });
         }
 
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Remove loading class
+        document.addEventListener('DOMContentLoaded', () => {
+            initChaptersCarousel();
             document.body.classList.remove('loading');
-            
-            // Set initial donation amount (guarded so it can't break other init)
-            try { selectDonationAmount(25); } catch (e) { /* ignore */ }
-
-            // Init chapters carousel (guarded)
-            try { initChaptersCarousel(); } catch (e) { /* ignore */ }
         });
-
-        // Accessibility: Announce page changes for screen readers
-        function announceToScreenReader(message) {
-            const announcement = document.createElement('div');
-            announcement.setAttribute('aria-live', 'polite');
-            announcement.setAttribute('aria-atomic', 'true');
-            announcement.className = 'sr-only';
-            announcement.textContent = message;
-            document.body.appendChild(announcement);
-            
-            setTimeout(() => {
-                document.body.removeChild(announcement);
-            }, 1000);
-        }
     </script>
 </body>
 </html>
